@@ -66,9 +66,8 @@ describe('Penrose', function () {
       'dist': testDir + 'data/dist/',
       'plugins': {
         'responsiveImage': {
-          // prependSrc: 'src/', // Prepend path to source, e.g. `img/file.jpg` in Markdown is passed to Fractal lib as `src/img/file.jpg`
-          // sizes: '(min-width: 960px) 240px, 100vw',
-          sizes: '100vw',
+          prependSrc: 'test/data/', // Prepend path to source, e.g. `files/img.jpg` in Markdown is passed to Penrose as `test/data/files/img.jpg`
+          sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
           srcset: [{
             style: '600',
             width: 600
