@@ -1,0 +1,22 @@
+{%- macro listItem(node) %}
+<li>
+  {%- if node.childNodes %}
+    <a href="{{ node.link }}">{{ node.title }}</a>
+    {{ list(node.childNodes) }}
+  {%- else %}
+    <a href="{{ node.link }}">{{ node.title }}</a>
+  {%- endif %}
+</li>
+{%- endmacro %}
+
+{%- macro list(nodes) %}
+<ul>
+  {%- for node in nodes %}
+    {{ listItem(node) }}
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{%- if nodes|length and nodes[0].childNodes %}
+  {{ list(nodes[0].childNodes) }}
+{%- endif %}

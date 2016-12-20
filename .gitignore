@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+
+# IDE files
+nbproject
+.idea
+.netbeans.xml
+
+# Test output
+test/data/dist/

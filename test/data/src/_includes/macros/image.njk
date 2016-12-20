@@ -1,0 +1,17 @@
+{%- macro image(src, alt="", title="") %}
+<figure>
+  <img src="{{ src }}" alt="{{ alt }}" />
+  {%- if title %}
+  <figcaption>{{ title }}</figcaption>
+  {%- endif %}
+</figure>
+{%- endmacro %}
+
+{%- macro penroseImage(dataPenroseSrc, dataPenroseStyles, src, srcset, sizes="", alt="", title="") %}
+<figure>
+  <img data-penrose-src="{{ dataPenroseSrc }}" data-penrose-styles="{{ dataPenroseStyles }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ alt }}" />
+  {%- if title %}
+  <figcaption>{{ title }}</figcaption>
+  {%- endif %}
+</figure>
+{%- endmacro %}
