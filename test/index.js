@@ -9,8 +9,10 @@ var path = require('path');
 var Promise = require('bluebird');
 var Toco = require('..').Toco;
 
-describe('Penrose', function () {
+describe('Toco', function () {
+  var dirAbs = process.cwd() + '/';
   var testDir = __dirname.substring(process.cwd().length + 1) + '/';
+  var testDirAbs = __dirname + '/';
 
   var config = {
     'imageStyles': {
@@ -113,10 +115,44 @@ describe('Penrose', function () {
     }
   });
 
-  describe('buildHtml', function () {
-    it('Should build HTML', function () {
+  describe('findTemplate', function () {
+    it('Should return absolute path to index template', function () {
+      var actual = toco.findTemplate('index');
+      var expected = dirAbs + 'templates/index.njk';
+
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('findPartialTemplate', function () {
+    it('Should return absolute path to template for image', function () {
+      var actual = toco.findPartialTemplate('image');
+      var expected = dirAbs + 'templates/_partials/image.njk';
+
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('findContentTemplate', function () {
+    it('Should return absolute path to template for default single view of any content type', function () {
+      var actual = toco.findContentTemplate('single');
+      var expected = dirAbs + 'templates/_default/single.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for single view of post content type', function () {
+      var actual = toco.findContentTemplate('single', 'post');
+      var expected = testDirAbs + 'data/src/templates/post/single.njk';
+
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('build', function () {
+    it('Should build', function () {
       var actual = function () {
-        return toco.buildHtml()
+        return toco.build()
           .then(function () {
             return multiGlob([config.toco.dist + '**/*'], {
               nodir: true
@@ -124,7 +160,10 @@ describe('Penrose', function () {
           });
       };
 
-      var expected = [config.toco.dist + 'test.html'];
+      var expected = [
+        config.toco.dist + 'index.html',
+        config.toco.dist + 'post/first.html'
+      ];
 
       return assert.eventually.deepEqual(actual(), expected);
     });

@@ -17,6 +17,8 @@
 </ul>
 {%- endmacro %}
 
+{%- macro toc(nodes) %}
 {%- if nodes|length and nodes[0].childNodes %}
   {{ list(nodes[0].childNodes) }}
 {%- endif %}
+{%- endmacro %}

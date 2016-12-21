@@ -1,0 +1,6 @@
+{%- from "./macros/image.njk" import image, penroseImage %}
+{%- if srcset %}
+  {{ penroseImage(dataPenroseSrc, dataPenroseStyles, src, srcset, sizes, alt, title) }}
+{%- else %}
+  {{ image(src, alt, title) }}
+{%- endif %}
