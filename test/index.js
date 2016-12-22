@@ -115,10 +115,24 @@ describe('Toco', function () {
     }
   });
 
-  describe('findTemplate', function () {
+  describe('findContentTemplate', function () {
     it('Should return absolute path to index template', function () {
-      var actual = toco.findTemplate('index');
+      var actual = toco.findContentTemplate('index');
       var expected = dirAbs + 'templates/index.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for default single view of any content type', function () {
+      var actual = toco.findContentTemplate('single');
+      var expected = dirAbs + 'templates/single.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for single view of post content type', function () {
+      var actual = toco.findContentTemplate('single', 'post');
+      var expected = testDirAbs + 'data/src/templates/post/single.njk';
 
       assert.equal(actual, expected);
     });
@@ -128,22 +142,6 @@ describe('Toco', function () {
     it('Should return absolute path to template for image', function () {
       var actual = toco.findPartialTemplate('image');
       var expected = dirAbs + 'templates/_partials/image.njk';
-
-      assert.equal(actual, expected);
-    });
-  });
-
-  describe('findContentTemplate', function () {
-    it('Should return absolute path to template for default single view of any content type', function () {
-      var actual = toco.findContentTemplate('single');
-      var expected = dirAbs + 'templates/_default/single.njk';
-
-      assert.equal(actual, expected);
-    });
-
-    it('Should return absolute path to template for single view of post content type', function () {
-      var actual = toco.findContentTemplate('single', 'post');
-      var expected = testDirAbs + 'data/src/templates/post/single.njk';
 
       assert.equal(actual, expected);
     });
