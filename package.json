@@ -1,6 +1,6 @@
 {
   "name": "toco",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Yet another static site generator",
   "main": "lib/toco.js",
   "repository": {
@@ -35,7 +35,8 @@
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.0",
     "penrose": "^0.1.0",
-    "remarkable": "^1.7.1"
+    "remarkable": "^1.7.1",
+    "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
