@@ -130,9 +130,16 @@ describe('Toco', function () {
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for single view of post content type', function () {
+    it('Should return absolute path to template for default view if that view does not exist for given content type', function () {
       var actual = toco.findContentTemplate('single', 'post');
-      var expected = testDirAbs + 'data/src/templates/post/single.njk';
+      var expected = dirAbs + 'templates/single.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for view that does exist for given content type', function () {
+      var actual = toco.findContentTemplate('list', 'post');
+      var expected = testDirAbs + 'data/src/templates/post/list.njk';
 
       assert.equal(actual, expected);
     });
