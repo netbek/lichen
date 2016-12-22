@@ -66,17 +66,19 @@ describe('Toco', function () {
     'toco': {
       'src': testDir + 'data/src/',
       'dist': testDir + 'data/dist/',
-      'plugins': {
-        'responsiveImage': {
-          prependSrc: 'test/data/', // Prepend path to source, e.g. `files/img.jpg` in Markdown is passed to Penrose as `test/data/files/img.jpg`
-          sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
-          srcset: [{
-            style: '600',
-            width: 600
-          }, {
-            style: '1200',
-            width: 1200
-          }]
+      'remarkable': {
+        'plugins': {
+          'responsiveImage': {
+            prependSrc: 'test/data/', // Prepend path to source, e.g. `files/img.jpg` in Markdown is passed to Penrose as `test/data/files/img.jpg`
+            sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
+            srcset: [{
+              style: '600',
+              width: 600
+            }, {
+              style: '1200',
+              width: 1200
+            }]
+          }
         }
       }
     }
@@ -104,16 +106,14 @@ describe('Toco', function () {
       });
   });
 
-  var toco = new Toco({
-    src: config.toco.src,
-    dist: config.toco.dist,
-    plugins: config.toco.plugins,
+  var tocoConfig = _.assign({}, config.toco, {
     imageStyles: config.imageStyles,
     penrose: config.penrose,
     env: {
       dev: true
     }
   });
+  var toco = new Toco(tocoConfig);
 
   describe('findContentTemplate', function () {
     it('Should return absolute path to index template', function () {
