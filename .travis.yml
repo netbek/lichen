@@ -4,3 +4,4 @@ node_js:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y graphicsmagick
+  - sudo npm install -g bower gulp-cli
