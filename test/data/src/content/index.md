@@ -1,4 +1,7 @@
 ---
+themes:
+  - alpha
+  - omega
 title: Test page
 ---
 

@@ -216,15 +216,45 @@ describe('Toco', function () {
       var actual = function () {
         return toco.build()
           .then(function () {
-            return multiGlob([config.toco.dist + '**/*'], {
+            return multiGlob([tocoConfig.dist + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        config.toco.dist + 'index.html',
-        config.toco.dist + 'post/first.html'
+        tocoConfig.dist + 'index.html',
+        tocoConfig.dist + 'post/first.html'
+      ];
+
+      return assert.eventually.deepEqual(actual(), expected);
+    });
+
+    it('Should build only content for alpha theme', function () {
+      var themeName = 'alpha';
+      var tocoConfig = _.assign({}, config.toco, {
+        dist: config.toco.dist + themeName + '/',
+        imageStyles: config.imageStyles,
+        penrose: config.penrose,
+        env: {
+          dev: true
+        }
+      });
+      var toco = new Toco(tocoConfig);
+
+      var actual = function () {
+        return toco.build({
+            themes: [themeName]
+          })
+          .then(function () {
+            return multiGlob([tocoConfig.dist + '**/*'], {
+              nodir: true
+            });
+          });
+      };
+
+      var expected = [
+        tocoConfig.dist + 'index.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);
