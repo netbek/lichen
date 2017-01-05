@@ -14,21 +14,29 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 ### Image without caption
 
-![Alt text](files/The_Earth_seen_from_Apollo_17.jpg)
+![Alt text](The_Earth_seen_from_Apollo_17.jpg)
 
 ### Image with caption
 
-![Alt text](files/The_Earth_seen_from_Apollo_17.jpg "Caption")
+![Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
+
+### External image without caption
+
+![Alt text](http://lorempixel.com/400/300/abstract/)
+
+### External image with caption
+
+![Alt text](http://lorempixel.com/400/300/abstract/ "Caption")
 
 ## Responsive image
 
 ### Responsive image without caption
 
-$[Alt text](files/The_Earth_seen_from_Apollo_17.jpg)
+$[Alt text](The_Earth_seen_from_Apollo_17.jpg)
 
 ### Responsive image with caption
 
-$[Alt text](files/The_Earth_seen_from_Apollo_17.jpg "Caption")
+$[Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
 
 ## Video
 

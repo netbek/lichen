@@ -6,8 +6,11 @@ chai.use(chaiAsPromised);
 var del = require('del');
 var multiGlob = require('../lib/util').multiGlob;
 var path = require('path');
+var Penrose = require('penrose').Penrose;
 var Promise = require('bluebird');
 var Toco = require('..').Toco;
+
+var SCHEME_PUBLIC = require('penrose').SCHEME_PUBLIC;
 
 describe('Toco', function () {
   var dirAbs = process.cwd() + '/';
@@ -60,16 +63,40 @@ describe('Toco', function () {
       }
     },
     'penrose': {
-      'srcBase': testDir + 'data/files/',
-      'dist': testDir + 'data/files/styles/'
+      'schemes': {
+        'public': {
+          'path': testDir + 'data/files/'
+        }
+      },
     },
     'toco': {
       'src': testDir + 'data/src/',
       'dist': testDir + 'data/dist/',
       'remarkable': {
         'plugins': {
+          'image': {
+            formatSrc: function (uri) {
+              var scheme = penrose.getScheme(uri);
+
+              // If URI has no scheme, then add public scheme.
+              if (_.isUndefined(scheme)) {
+                return SCHEME_PUBLIC + '://' + uri;
+              }
+
+              return uri;
+            }
+          },
           'responsiveImage': {
-            prependSrc: 'test/data/', // Prepend path to source, e.g. `files/img.jpg` in Markdown is passed to Penrose as `test/data/files/img.jpg`
+            formatSrc: function (uri) {
+              var scheme = penrose.getScheme(uri);
+
+              // If URI has no scheme, then add public scheme.
+              if (_.isUndefined(scheme)) {
+                return SCHEME_PUBLIC + '://' + uri;
+              }
+
+              return uri;
+            },
             sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
             srcset: [{
               style: '600',
@@ -84,27 +111,36 @@ describe('Toco', function () {
     }
   };
 
+  /**
+   * Deletes test output files.
+   *
+   * @return {Promise}
+   */
+  function deleteOutput() {
+    var dirs = _.map(config.penrose.schemes, function (scheme) {
+      return scheme.path + 'styles/';
+    }).concat([
+      config.toco.dist
+    ]);
+
+    return del(dirs);
+  }
+
   beforeEach(function (done) {
-    // Delete test output.
-    del([
-        config.penrose.dist,
-        config.toco.dist
-      ])
+    deleteOutput()
       .then(function () {
         done();
       });
   });
 
   after(function (done) {
-    // Delete test output.
-    del([
-        config.penrose.dist,
-        config.toco.dist
-      ])
+    deleteOutput()
       .then(function () {
         done();
       });
   });
+
+  var penrose = new Penrose(config.penrose);
 
   var tocoConfig = _.assign({}, config.toco, {
     imageStyles: config.imageStyles,
