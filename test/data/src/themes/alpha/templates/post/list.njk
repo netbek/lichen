@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>
+      {{ page.title }}
+    </title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>{{ page.title }}</h1>
+      </header>
+
+      {%- if page.lead %}
+        {{ page.lead|safe }}
+      {%- endif %}
+
+      {%- if page.toc %}
+        {{ page.toc|safe }}
+      {%- endif %}
+
+      {{ page.content|remove('h1')|safe }}
+    </main>
+  </body>
+</html>

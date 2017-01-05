@@ -1,4 +1,5 @@
 ---
+theme: alpha
 title: My first post
 ---
 

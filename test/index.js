@@ -166,8 +166,22 @@ describe('Toco', function () {
       assert.equal(actual, expected);
     });
 
+    it('Should return absolute path to template for default single view of any content type for given theme', function () {
+      var actual = toco.findContentTemplate('single', undefined, 'alpha');
+      var expected = testDirAbs + 'data/src/themes/alpha/templates/single.njk';
+
+      assert.equal(actual, expected);
+    });
+
     it('Should return absolute path to template for default view if that view does not exist for given content type', function () {
       var actual = toco.findContentTemplate('single', 'post');
+      var expected = dirAbs + 'templates/single.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for default view if that view does not exist for given theme', function () {
+      var actual = toco.findContentTemplate('single', undefined, 'omega');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
@@ -176,6 +190,13 @@ describe('Toco', function () {
     it('Should return absolute path to template for view that does exist for given content type', function () {
       var actual = toco.findContentTemplate('list', 'post');
       var expected = testDirAbs + 'data/src/templates/post/list.njk';
+
+      assert.equal(actual, expected);
+    });
+
+    it('Should return absolute path to template for view that does exist for given content type and theme', function () {
+      var actual = toco.findContentTemplate('list', 'post', 'alpha');
+      var expected = testDirAbs + 'data/src/themes/alpha/templates/post/list.njk';
 
       assert.equal(actual, expected);
     });
