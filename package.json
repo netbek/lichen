@@ -1,6 +1,6 @@
 {
   "name": "toco",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Yet another static site generator",
   "main": "lib/toco.js",
   "repository": {
@@ -8,6 +8,7 @@
     "url": "git://github.com/netbek/toco"
   },
   "scripts": {
+    "postinstall": "bower install",
     "test": "make test"
   },
   "author": {
@@ -51,8 +52,5 @@
     "chai-as-promised": "^5.3.0",
     "glob-promise": "^3.1.0",
     "mocha": "^2.4.5"
-  },
-  "scripts": {
-    "postinstall": "bower install"
   }
 }
