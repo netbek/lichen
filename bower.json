@@ -1,0 +1,13 @@
+{
+  "name": "toco",
+  "version": "0.1.9",
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "normalize-css": "git://github.com/necolas/normalize.css.git#02c5c7adbbec1707900fde86068405735c733b42",
+    "waypoints": "^3.x",
+    "superfish": "^1.7.9"
+  },
+  "devDependencies": {
+    "bourbon": "^4.2.6"
+  }
+}

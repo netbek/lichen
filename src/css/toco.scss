@@ -1,0 +1,161 @@
+@import "bourbon";
+
+$line-height-computed: 1.5em;
+$blue-100: #b3dce8;
+$blue-500: #008bb2;
+$blue-600: #006d8c;
+$white: #fff;
+
+$header-list-item-padding-horz: 1em;
+$header-list-item-padding-vert: .75em;
+$header-height: $line-height-computed + ($header-list-item-padding-vert * 2);
+
+.toco-region-header {
+  @include clearfix;
+  display: block;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  background: $blue-500;
+
+  .sf-menu {
+    font-family: 'sans-serif';
+    color: $white;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: $line-height-computed;
+    margin: 0 auto $line-height-computed;
+    padding: 0;
+  }
+
+  .sf-menu,
+  .sf-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sf-menu li {
+    position: relative;
+  }
+
+  .sf-menu ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+  }
+
+  .sf-menu > li {
+    float: left;
+  }
+
+  .sf-menu li:hover > ul,
+  .sf-menu li.sfHover > ul {
+    display: block;
+  }
+
+  .sf-menu a {
+    display: block;
+    position: relative;
+  }
+
+  .sf-menu ul ul {
+    top: 0;
+    left: 100%;
+  }
+
+  .sf-menu {
+    float: left;
+  }
+
+  .sf-menu ul {
+    min-width: 12em; /* allow long menu items to determine submenu width */
+    *width: 12em; /* no auto sub width for IE7, see white-space comment below */
+  }
+
+  .sf-menu a {
+    padding: $header-list-item-padding-vert $header-list-item-padding-horz;
+    text-decoration: none;
+    zoom: 1; /* IE7 */
+  }
+
+  .sf-menu a {
+    color: $white;
+  }
+
+  .sf-menu li {
+    background: $blue-500;
+    white-space: nowrap; /* no need for Supersubs plugin */
+    *white-space: normal; /* ...unless you support IE7 (let it wrap) */
+    // transition: background .2s;
+    transition: none;
+  }
+
+  .sf-menu ul li {
+    background: $blue-600;
+  }
+
+  .sf-menu ul ul li {
+    background: $blue-600;
+  }
+
+  // 2nd level
+  .sf-menu li:hover,
+  .sf-menu li.sfHover {
+    background: $blue-500;
+    /* only transition out, not in */
+    transition: none;
+  }
+
+  // 1st level
+  .sf-menu > li:hover,
+  .sf-menu > li.sfHover {
+    background: $blue-600;
+    /* only transition out, not in */
+    transition: none;
+  }
+
+  /*** arrows (for all except IE7) **/
+  .sf-arrows .sf-with-ul {
+    padding-right: 2.5em;
+    *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+  }
+
+  /* styling for both css and generated arrows */
+  .sf-arrows .sf-with-ul:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    margin-top: -3px;
+    height: 0;
+    width: 0;
+    /* order of following 3 rules important for fallbacks to work */
+    border: 5px solid transparent;
+    border-top-color: $blue-100; /* edit this to suit design (no rgba in IE8) */
+    border-top-color: rgba($white, .5);
+  }
+
+  .sf-arrows > li > .sf-with-ul:focus:after,
+  .sf-arrows > li:hover > .sf-with-ul:after,
+  .sf-arrows > .sfHover > .sf-with-ul:after {
+    border-top-color: $white; /* IE8 fallback colour */
+  }
+
+  /* styling for right-facing arrows */
+  .sf-arrows ul .sf-with-ul:after {
+    margin-top: -5px;
+    margin-right: -3px;
+    border-color: transparent;
+    border-left-color: $blue-100; /* edit this to suit design (no rgba in IE8) */
+    border-left-color: rgba($white, .5);
+  }
+
+  .sf-arrows ul li > .sf-with-ul:focus:after,
+  .sf-arrows ul li:hover > .sf-with-ul:after,
+  .sf-arrows ul .sfHover > .sf-with-ul:after {
+    border-left-color: $white;
+  }
+}
