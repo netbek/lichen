@@ -1,1 +1,1 @@
-<aside class="{{ params.class }}">{{ content|markdown|safe }}</aside>
+<aside{% if params.class %} class="{{ params.class }}"{% endif %}>{{ content|markdown|safe }}</aside>
