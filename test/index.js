@@ -214,7 +214,7 @@ describe('Toco', function () {
   describe('build', function () {
     it('Should build', function () {
       var actual = function () {
-        return toco.build()
+        return toco.buildContent()
           .then(function () {
             return multiGlob([tocoConfig.dist + '**/*'], {
               nodir: true
@@ -243,7 +243,7 @@ describe('Toco', function () {
       var toco = new Toco(tocoConfig);
 
       var actual = function () {
-        return toco.build({
+        return toco.buildContent({
             themes: [themeName]
           })
           .then(function () {
