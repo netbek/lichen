@@ -64,3 +64,24 @@ $[Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
 ### Video with caption
 
 %[Alt text](https://www.youtube.com/watch?v=0o4ONs2i1qw 320 240 "Caption")
+
+## LaTeX
+
+```
+\[\vec{v}_{\text{f}} =
+\vec{v}_{\text{i}} + \vec{a}\Delta t\]
+```
+
+`\(\vec{v}_{\text{f}} = \vec{v}_{\text{i}} + \vec{a}\Delta t\)`
+
+```
+\[\begin{align} {\vec{v}_\text{f}}^{\;2} &= {\vec{v}_\text{i}}^{\; 2} +2\vec{a} \cdot \Delta \vec{x} \\ \text{or } {\vec{v}_\text{f}}^{\;2} &= {\vec{v}_\text{i}}^{\; 2} + 2\vec{a} \cdot \Delta \vec{y} \end{align}\]
+```
+
+```
+\[\begin{align} \Delta \vec{x} &= \vec{v}_\text{i} \Delta t + \frac{1}{2} \vec{a} (\Delta t)^2 \\ \text{or } \Delta \vec{y} &= \vec{v}_\text{i} \Delta t + \frac{1}{2} \vec{a} (\Delta t)^2 \end{align}\]
+```
+
+```
+\[\begin{align} \Delta \vec{x} &= \left(\frac{\vec{v}_\text{i}+\vec{v}_\text{f}}{2}\right)\Delta t \\ \text{or } \Delta \vec{y} &= \left(\frac{\vec{v}_\text{i}+\vec{v}_\text{f}}{2}\right)\Delta t \end{align}\]
+```

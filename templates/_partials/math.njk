@@ -1,0 +1,11 @@
+{% if inline %}
+<span class="latex-math" data-math-input-format="{{ mathInputFormat }}" data-math-output="{{ mathOutput }}" data-math-output-format="{{ mathOutputFormat }}">
+  <img src="{{ src }}" alt="{{ alt }}" />
+  <span hidden data-math-input>{{ mathInput }}</span>
+</span>
+{% else %}
+<div class="latex-math" data-math-input-format="{{ mathInputFormat }}" data-math-output="{{ mathOutput }}" data-math-output-format="{{ mathOutputFormat }}">
+  <img src="{{ src }}" alt="{{ alt }}" />
+  <span hidden data-math-input>{{ mathInput }}</span>
+</div>
+{% endif %}

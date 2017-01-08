@@ -1,6 +1,6 @@
 {
   "name": "toco",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "dependencies": {
     "jquery": "~1.11.1",
     "normalize-css": "git://github.com/necolas/normalize.css.git#02c5c7adbbec1707900fde86068405735c733b42",

@@ -9,4 +9,5 @@ nbproject
 
 # Test output
 test/data/dist/
+test/data/files/math/
 test/data/files/styles/

@@ -68,6 +68,9 @@ describe('Toco', function () {
           'path': testDir + 'data/files/'
         }
       },
+      'math': {
+        ex: 12
+      }
     },
     'toco': {
       'src': testDir + 'data/src/',
@@ -85,6 +88,19 @@ describe('Toco', function () {
 
               return uri;
             }
+          },
+          'math': {
+            formatSrc: function (uri) {
+              var scheme = penrose.getScheme(uri);
+
+              // If URI has no scheme, then add public scheme.
+              if (_.isUndefined(scheme)) {
+                return SCHEME_PUBLIC + '://' + uri;
+              }
+
+              return uri;
+            },
+            typeset: false
           },
           'responsiveImage': {
             formatSrc: function (uri) {
@@ -120,7 +136,8 @@ describe('Toco', function () {
     var dirs = _.map(config.penrose.schemes, function (scheme) {
       return scheme.path + 'styles/';
     }).concat([
-      config.toco.dist
+      config.toco.dist,
+      testDir + 'data/files/math/'
     ]);
 
     return del(dirs);
@@ -211,8 +228,8 @@ describe('Toco', function () {
     });
   });
 
-  describe('build', function () {
-    it('Should build', function () {
+  describe('buildContent', function () {
+    it('Should build content', function () {
       var actual = function () {
         return toco.buildContent()
           .then(function () {
@@ -240,6 +257,7 @@ describe('Toco', function () {
           dev: true
         }
       });
+      _.set(tocoConfig, 'remarkable.plugins.math.typeset', true);
       var toco = new Toco(tocoConfig);
 
       var actual = function () {
