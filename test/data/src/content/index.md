@@ -65,7 +65,6 @@ $[Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
 
 %[Alt text](https://www.youtube.com/watch?v=0o4ONs2i1qw 320 240 "Caption")
 
-
 ## Templates
 
 ```template
@@ -76,7 +75,7 @@ $[Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
 <table>
   <tr>
     <td>{% render "button", {text: "Lorem ipsum dolor sit amet"} %}{% endrender %}</td>
-    <td>{% render "button", {text: "Consectetur adipisicing elit} %}{% endrender %}</td>
+    <td>{% render "button", {text: "Consectetur adipisicing elit"} %}{% endrender %}</td>
   </tr>
 </table>
 ```
