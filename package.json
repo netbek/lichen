@@ -1,6 +1,6 @@
 {
   "name": "toco",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Yet another static site generator",
   "main": "lib/toco.js",
   "repository": {
