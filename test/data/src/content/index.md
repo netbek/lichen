@@ -67,15 +67,25 @@ $[Alt text](The_Earth_seen_from_Apollo_17.jpg "Caption")
 
 ## Templates
 
+### Render tag
+
 ```template
-{% render "button", {text: "Lorem ipsum"} %}{% endrender %}
+{% render "list", site.data["near-earth-comets"].view.data %}{% endrender %}
 ```
+
+## Render macro
+
+```template
+{{ render("button", {text: "Lorem ipsum dolor sit amet"}) }}
+```
+
+## Render macro inside HTML snippet
 
 ```template
 <table>
   <tr>
-    <td>{% render "button", {text: "Lorem ipsum dolor sit amet"} %}{% endrender %}</td>
-    <td>{% render "button", {text: "Consectetur adipisicing elit"} %}{% endrender %}</td>
+    <td>{{ render("button", {text: "Lorem ipsum dolor sit amet"}) }}</td>
+    <td>{{ render("button", {text: "Consectetur adipisicing elit"}) }}</td>
   </tr>
 </table>
 ```
