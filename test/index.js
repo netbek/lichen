@@ -10,7 +10,8 @@ var Penrose = require('penrose').Penrose;
 var Promise = require('bluebird');
 var Toco = require('..').Toco;
 
-var SCHEME_PUBLIC = require('penrose').SCHEME_PUBLIC;
+var PUBLIC = require('penrose').PUBLIC;
+var TEMPORARY = require('penrose').TEMPORARY;
 
 describe('Toco', function () {
   var dirAbs = process.cwd() + '/';
@@ -66,6 +67,9 @@ describe('Toco', function () {
       'schemes': {
         'public': {
           'path': testDir + 'data/files/'
+        },
+        'temporary': {
+          'path': testDir + 'data/temp/files/'
         }
       },
       'math': {
@@ -75,6 +79,7 @@ describe('Toco', function () {
     'toco': {
       'src': testDir + 'data/src/',
       'dist': testDir + 'data/dist/',
+      'temp': testDir + 'data/temp/',
       'remarkable': {
         'plugins': {
           'image': {
@@ -83,7 +88,7 @@ describe('Toco', function () {
 
               // If URI has no scheme, then add public scheme.
               if (_.isUndefined(scheme)) {
-                return SCHEME_PUBLIC + '://' + uri;
+                return PUBLIC + '://' + uri;
               }
 
               return uri;
@@ -95,7 +100,7 @@ describe('Toco', function () {
 
               // If URI has no scheme, then add public scheme.
               if (_.isUndefined(scheme)) {
-                return SCHEME_PUBLIC + '://' + uri;
+                return PUBLIC + '://' + uri;
               }
 
               return uri;
@@ -108,7 +113,7 @@ describe('Toco', function () {
 
               // If URI has no scheme, then add public scheme.
               if (_.isUndefined(scheme)) {
-                return SCHEME_PUBLIC + '://' + uri;
+                return PUBLIC + '://' + uri;
               }
 
               return uri;
@@ -137,7 +142,7 @@ describe('Toco', function () {
       return scheme.path + 'styles/';
     }).concat([
       config.toco.dist,
-      testDir + 'data/files/math/'
+      config.toco.temp
     ]);
 
     return del(dirs);
@@ -161,10 +166,7 @@ describe('Toco', function () {
 
   var tocoConfig = _.assign({}, config.toco, {
     imageStyles: config.imageStyles,
-    penrose: config.penrose,
-    env: {
-      dev: true
-    }
+    penrose: config.penrose
   });
   var toco = new Toco(tocoConfig);
 
@@ -251,6 +253,7 @@ describe('Toco', function () {
       var themeName = 'alpha';
       var tocoConfig = _.assign({}, config.toco, {
         dist: config.toco.dist + themeName + '/',
+        temp: config.toco.temp + themeName + '/',
         imageStyles: config.imageStyles,
         penrose: config.penrose,
         env: {
@@ -265,14 +268,14 @@ describe('Toco', function () {
             themes: [themeName]
           })
           .then(function () {
-            return multiGlob([tocoConfig.dist + '**/*'], {
+            return multiGlob([tocoConfig.temp + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        tocoConfig.dist + 'index.html'
+        tocoConfig.temp + 'index.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);
