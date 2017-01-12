@@ -7,6 +7,8 @@ before_install:
   - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   - sudo apt-get -qq update
   - sudo apt-get install -y graphicsmagick yarn=0.18.1-1
+install:
+  - npm install -g bower
 cache:
   directories:
   - $HOME/.cache/yarn
