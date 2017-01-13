@@ -7,7 +7,7 @@
 </figure>
 {%- endmacro %}
 
-{%- macro penroseImage(dataPenroseSrc, dataPenroseStyles, src, srcset, sizes="", alt="", title="") %}
+{%- macro responsiveImage(dataPenroseSrc, dataPenroseStyles, src, srcset, sizes="", alt="", title="") %}
 <figure>
   <img data-penrose-src="{{ dataPenroseSrc }}" data-penrose-styles="{{ dataPenroseStyles }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ alt }}" />
   {%- if title %}
