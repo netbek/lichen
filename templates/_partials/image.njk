@@ -1,6 +1,6 @@
 {%- from "_macros/image.njk" import image, responsiveImage %}
 {%- if srcset %}
-  {{ responsiveImage(dataPenroseSrc, dataPenroseStyles, src, srcset, sizes, alt, title) }}
+  {{ responsiveImage(dataResponsiveImageSrc, dataResponsiveImageStyles, src, srcset, sizes, alt, title) }}
 {%- else %}
   {{ image(src, alt, title) }}
 {%- endif %}
