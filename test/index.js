@@ -10,8 +10,8 @@ var Penrose = require('penrose').Penrose;
 var Promise = require('bluebird');
 var Toco = require('..').Toco;
 
-var PUBLIC = require('penrose').PUBLIC;
-var TEMPORARY = require('penrose').TEMPORARY;
+var DEV = require('..').DEV;
+var PROD = require('..').PROD;
 
 describe('Toco', function () {
   var dirAbs = process.cwd() + '/';
@@ -64,60 +64,54 @@ describe('Toco', function () {
       }
     },
     'penrose': {
-      'schemes': {
-        'public': {
-          'path': testDir + 'data/files/'
-        },
-        'temporary': {
-          'path': testDir + 'data/temp/files/'
-        }
-      },
       'math': {
         ex: 12
       }
     },
     'toco': {
-      'src': testDir + 'data/src/',
-      'dist': testDir + 'data/dist/',
-      'temp': testDir + 'data/temp/',
+      // Derivative images, rendered LaTeX
+      'files': {
+        'src': {
+          'path': testDir + 'data/files/'
+        },
+        'dist': {
+          // Development (editor) build
+          'dev': {
+            'path': testDir + 'data/temp/files/',
+            'url': '/'
+          },
+          // Production build
+          'prod': {
+            'path': testDir + 'data/files/',
+            'url': '/'
+          }
+        }
+      },
+      // Markdown content, YAML data, Nunjucks templates, rendered HTML
+      'pages': {
+        'src': {
+          'path': testDir + 'data/src/'
+        },
+        'dist': {
+          // Development (editor) build
+          'dev': {
+            'path': testDir + 'data/temp/',
+            'url': '/'
+          },
+          // Production build
+          'prod': {
+            'path': testDir + 'data/dist/',
+            'url': '/'
+          }
+        }
+      },
       'remarkable': {
         'plugins': {
-          'image': {
-            formatSrc: function (uri) {
-              var scheme = penrose.getScheme(uri);
-
-              // If URI has no scheme, then add public scheme.
-              if (_.isUndefined(scheme)) {
-                return PUBLIC + '://' + uri;
-              }
-
-              return uri;
-            }
-          },
+          'image': {},
           'math': {
-            formatSrc: function (uri) {
-              var scheme = penrose.getScheme(uri);
-
-              // If URI has no scheme, then add public scheme.
-              if (_.isUndefined(scheme)) {
-                return PUBLIC + '://' + uri;
-              }
-
-              return uri;
-            },
             typeset: false
           },
           'responsiveImage': {
-            formatSrc: function (uri) {
-              var scheme = penrose.getScheme(uri);
-
-              // If URI has no scheme, then add public scheme.
-              if (_.isUndefined(scheme)) {
-                return PUBLIC + '://' + uri;
-              }
-
-              return uri;
-            },
             sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
             srcset: [{
               style: '600',
@@ -138,12 +132,16 @@ describe('Toco', function () {
    * @return {Promise}
    */
   function deleteOutput() {
-    var dirs = _.map(config.penrose.schemes, function (scheme) {
-      return scheme.path + 'styles/';
-    }).concat([
-      config.toco.dist,
-      config.toco.temp
-    ]);
+    var dirs = [];
+
+    _.forEach(config.toco.files.dist, function (build) {
+      dirs.push(path.join(build.path, 'math'));
+      dirs.push(path.join(build.path, 'styles'));
+    });
+
+    _.forEach(config.toco.pages.dist, function (build) {
+      dirs.push(path.join(build.path));
+    });
 
     return del(dirs);
   }
@@ -235,15 +233,15 @@ describe('Toco', function () {
       var actual = function () {
         return toco.buildContent()
           .then(function () {
-            return multiGlob([tocoConfig.dist + '**/*'], {
+            return multiGlob([tocoConfig.pages.dist[PROD].path + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        tocoConfig.dist + 'index.html',
-        tocoConfig.dist + 'post/first.html'
+        tocoConfig.pages.dist[PROD].path + 'index.html',
+        tocoConfig.pages.dist[PROD].path + 'post/first.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);
@@ -252,15 +250,19 @@ describe('Toco', function () {
     it('Should build only content for alpha theme', function () {
       var themeName = 'alpha';
       var tocoConfig = _.assign({}, config.toco, {
-        dist: config.toco.dist + themeName + '/',
-        temp: config.toco.temp + themeName + '/',
         imageStyles: config.imageStyles,
         penrose: config.penrose,
         env: {
-          dev: true
+          dev: true // Development build
         }
       });
-      _.set(tocoConfig, 'remarkable.plugins.math.typeset', true);
+
+      // Write pages to theme directory
+      tocoConfig.pages.dist[DEV].path += themeName + '/';
+
+      // Enable math typesetting
+      tocoConfig.remarkable.plugins.math.typeset = true;
+
       var toco = new Toco(tocoConfig);
 
       var actual = function () {
@@ -268,14 +270,14 @@ describe('Toco', function () {
             themes: [themeName]
           })
           .then(function () {
-            return multiGlob([tocoConfig.temp + '**/*'], {
+            return multiGlob([config.toco.pages.dist[DEV].path + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        tocoConfig.temp + 'index.html'
+        config.toco.pages.dist[DEV].path + 'index.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);

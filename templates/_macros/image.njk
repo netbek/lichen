@@ -9,7 +9,7 @@
 
 {%- macro responsiveImage(dataResponsiveImageSrc, dataResponsiveImageStyles, src, srcset, sizes="", alt="", title="") %}
 <figure>
-  <img data-responsive-image-src="{{ dataResponsiveImageSrc }}" data-responsive-image-styles="{{ dataResponsiveImageStyles }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ alt }}" />
+  <img data-responsive-image-src="{{ dataResponsiveImageSrc }}" data-responsive-image-styles="{{ dataResponsiveImageStyles.join(' ') }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ alt }}" />
   {%- if title %}
   <figcaption>{{ title }}</figcaption>
   {%- endif %}
