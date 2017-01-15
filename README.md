@@ -1,4 +1,4 @@
-# Toco [![Build Status](https://secure.travis-ci.org/netbek/toco.png?branch=master)](http://travis-ci.org/netbek/toco)
+# Lichen [![Build Status](https://secure.travis-ci.org/netbek/lichen.png?branch=master)](http://travis-ci.org/netbek/lichen)
 
 Yet another static site generator.
 

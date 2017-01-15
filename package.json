@@ -1,11 +1,11 @@
 {
-  "name": "toco",
-  "version": "0.1.23",
+  "name": "lichen",
+  "version": "0.1.24",
   "description": "Yet another static site generator",
-  "main": "lib/toco.js",
+  "main": "lib/lichen.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/netbek/toco"
+    "url": "git://github.com/netbek/lichen"
   },
   "scripts": {
     "postinstall": "bower install",
@@ -21,7 +21,7 @@
     "url": "http://www.gnu.org/licenses/agpl-3.0.txt"
   },
   "bugs": {
-    "url": "https://github.com/netbek/toco/issues"
+    "url": "https://github.com/netbek/lichen/issues"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -44,7 +44,7 @@
     "mkdirp": "^0.5.1",
     "node-sass": "3.4.2",
     "nunjucks": "^3.0.0",
-    "penrose": "^0.1.4",
+    "penrose": "^0.1.7",
     "remarkable": "^1.7.1",
     "run-sequence": "^1.2.2",
     "yaml-front-matter": "^3.4.0",

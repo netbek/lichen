@@ -8,12 +8,12 @@ var multiGlob = require('../lib/util').multiGlob;
 var path = require('path');
 var Penrose = require('penrose').Penrose;
 var Promise = require('bluebird');
-var Toco = require('..').Toco;
+var Lichen = require('..').Lichen;
 
 var DEV = require('..').DEV;
 var PROD = require('..').PROD;
 
-describe('Toco', function () {
+describe('Lichen', function () {
   var dirAbs = process.cwd() + '/';
   var testDir = __dirname.substring(process.cwd().length + 1) + '/';
   var testDirAbs = __dirname + '/';
@@ -68,7 +68,7 @@ describe('Toco', function () {
         ex: 12
       }
     },
-    'toco': {
+    'lichen': {
       // Derivative images, rendered LaTeX
       'files': {
         'src': {
@@ -134,12 +134,12 @@ describe('Toco', function () {
   function deleteOutput() {
     var dirs = [];
 
-    _.forEach(config.toco.files.dist, function (build) {
+    _.forEach(config.lichen.files.dist, function (build) {
       dirs.push(path.join(build.path, 'math'));
       dirs.push(path.join(build.path, 'styles'));
     });
 
-    _.forEach(config.toco.pages.dist, function (build) {
+    _.forEach(config.lichen.pages.dist, function (build) {
       dirs.push(path.join(build.path));
     });
 
@@ -162,57 +162,57 @@ describe('Toco', function () {
 
   var penrose = new Penrose(config.penrose);
 
-  var tocoConfig = _.assign({}, config.toco, {
+  var lichenConfig = _.assign({}, config.lichen, {
     imageStyles: config.imageStyles,
     penrose: config.penrose
   });
-  var toco = new Toco(tocoConfig);
+  var lichen = new Lichen(lichenConfig);
 
   describe('findContentTemplate', function () {
     it('Should return absolute path to index template', function () {
-      var actual = toco.findContentTemplate('index');
+      var actual = lichen.findContentTemplate('index');
       var expected = dirAbs + 'templates/index.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for default single view of any content type', function () {
-      var actual = toco.findContentTemplate('single');
+      var actual = lichen.findContentTemplate('single');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for default single view of any content type for given theme', function () {
-      var actual = toco.findContentTemplate('single', undefined, 'alpha');
+      var actual = lichen.findContentTemplate('single', undefined, 'alpha');
       var expected = testDirAbs + 'data/src/themes/alpha/templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for default view if that view does not exist for given content type', function () {
-      var actual = toco.findContentTemplate('single', 'post');
+      var actual = lichen.findContentTemplate('single', 'post');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for default view if that view does not exist for given theme', function () {
-      var actual = toco.findContentTemplate('single', undefined, 'omega');
+      var actual = lichen.findContentTemplate('single', undefined, 'omega');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for view that does exist for given content type', function () {
-      var actual = toco.findContentTemplate('list', 'post');
+      var actual = lichen.findContentTemplate('list', 'post');
       var expected = testDirAbs + 'data/src/templates/post/list.njk';
 
       assert.equal(actual, expected);
     });
 
     it('Should return absolute path to template for view that does exist for given content type and theme', function () {
-      var actual = toco.findContentTemplate('list', 'post', 'alpha');
+      var actual = lichen.findContentTemplate('list', 'post', 'alpha');
       var expected = testDirAbs + 'data/src/themes/alpha/templates/post/list.njk';
 
       assert.equal(actual, expected);
@@ -221,7 +221,7 @@ describe('Toco', function () {
 
   describe('findPartialTemplate', function () {
     it('Should return absolute path to template for image', function () {
-      var actual = toco.findPartialTemplate('image');
+      var actual = lichen.findPartialTemplate('image');
       var expected = dirAbs + 'templates/_partials/image.njk';
 
       assert.equal(actual, expected);
@@ -231,17 +231,17 @@ describe('Toco', function () {
   describe('buildContent', function () {
     it('Should build content', function () {
       var actual = function () {
-        return toco.buildContent()
+        return lichen.buildContent()
           .then(function () {
-            return multiGlob([tocoConfig.pages.dist[PROD].path + '**/*'], {
+            return multiGlob([lichenConfig.pages.dist[PROD].path + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        tocoConfig.pages.dist[PROD].path + 'index.html',
-        tocoConfig.pages.dist[PROD].path + 'post/first.html'
+        lichenConfig.pages.dist[PROD].path + 'index.html',
+        lichenConfig.pages.dist[PROD].path + 'post/first.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);
@@ -249,7 +249,7 @@ describe('Toco', function () {
 
     it('Should build only content for alpha theme', function () {
       var themeName = 'alpha';
-      var tocoConfig = _.assign({}, config.toco, {
+      var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
         penrose: config.penrose,
         env: {
@@ -258,26 +258,26 @@ describe('Toco', function () {
       });
 
       // Write pages to theme directory
-      tocoConfig.pages.dist[DEV].path += themeName + '/';
+      lichenConfig.pages.dist[DEV].path += themeName + '/';
 
       // Enable math typesetting
-      tocoConfig.remarkable.plugins.math.typeset = true;
+      lichenConfig.remarkable.plugins.math.typeset = true;
 
-      var toco = new Toco(tocoConfig);
+      var lichen = new Lichen(lichenConfig);
 
       var actual = function () {
-        return toco.buildContent({
+        return lichen.buildContent({
             themes: [themeName]
           })
           .then(function () {
-            return multiGlob([config.toco.pages.dist[DEV].path + '**/*'], {
+            return multiGlob([config.lichen.pages.dist[DEV].path + '**/*'], {
               nodir: true
             });
           });
       };
 
       var expected = [
-        config.toco.pages.dist[DEV].path + 'index.html'
+        config.lichen.pages.dist[DEV].path + 'index.html'
       ];
 
       return assert.eventually.deepEqual(actual(), expected);

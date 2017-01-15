@@ -10,7 +10,7 @@ $header-list-item-padding-horz: 1em;
 $header-list-item-padding-vert: .75em;
 $header-height: $line-height-computed + ($header-list-item-padding-vert * 2);
 
-.toco-region-header {
+.lichen-region-header {
   @include clearfix;
   display: block;
   position: fixed;

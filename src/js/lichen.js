@@ -1,5 +1,5 @@
 (function () {
-  var $menu = jQuery('.toco-region-header .sf-menu');
+  var $menu = jQuery('.lichen-region-header .sf-menu');
 
   jQuery('a[href="#"]', $menu).on('click', function (e) {
     e.preventDefault();
