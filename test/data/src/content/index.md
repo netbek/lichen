@@ -7,6 +7,16 @@ title: Test page
 
 # Test page
 
+## Headings
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
 ## Informational tags
 
 ### Note
