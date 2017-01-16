@@ -44,7 +44,7 @@
     "mkdirp": "^0.5.1",
     "node-sass": "3.4.2",
     "nunjucks": "^3.0.0",
-    "penrose": "^0.1.7",
+    "penrose": "^0.1.8",
     "remarkable": "^1.7.1",
     "run-sequence": "^1.2.2",
     "yaml-front-matter": "^3.4.0",
