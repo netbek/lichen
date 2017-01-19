@@ -228,6 +228,24 @@ describe('Lichen', function () {
     });
   });
 
+  describe('typesetMath', function () {
+    it('Should typeset math', function () {
+      var actual = function () {
+        var html = '<div>\\[\\begin{array}{c}\\frac{9}{10} \\; \\textrm{ and } \\; \\frac{1}{3}\\end{array}\\]</div>' +
+          '<div>\\(E = mc^2\\)</div>';
+
+        return lichen.typesetMath(html)
+          .then(function () {
+            console.log(arguments);
+          });
+      };
+
+      var expected;
+
+      return assert.eventually.deepEqual(actual(), expected);
+    });
+  });
+
   describe('buildContent', function () {
     it('Should build content', function () {
       var actual = function () {
