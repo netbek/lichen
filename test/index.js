@@ -13,6 +13,8 @@ var Lichen = require('..').Lichen;
 var DEV = require('..').DEV;
 var PROD = require('..').PROD;
 
+var POST_RENDER_HTML = require('..').POST_RENDER_HTML;
+
 describe('Lichen', function () {
   var dirAbs = process.cwd() + '/';
   var testDir = __dirname.substring(process.cwd().length + 1) + '/';
@@ -108,9 +110,6 @@ describe('Lichen', function () {
       'remarkable': {
         'plugins': {
           'image': {},
-          'math': {
-            typeset: false
-          },
           'responsiveImage': {
             sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
             srcset: [{
@@ -228,25 +227,9 @@ describe('Lichen', function () {
     });
   });
 
-  describe('typesetMath', function () {
-    it('Should typeset math', function () {
-      var actual = function () {
-        var html = '<div>\\[\\begin{array}{c}\\frac{9}{10} \\; \\textrm{ and } \\; \\frac{1}{3}\\end{array}\\]</div>' +
-          '<div>\\(E = mc^2\\)</div>';
-
-        return lichen.typesetMath(html)
-          .then(function () {
-            console.log(arguments);
-          });
-      };
-
-      var expected;
-
-      return assert.eventually.deepEqual(actual(), expected);
-    });
-  });
-
   describe('buildContent', function () {
+    this.timeout(0);
+
     it('Should build content', function () {
       var actual = function () {
         return lichen.buildContent()
@@ -279,7 +262,10 @@ describe('Lichen', function () {
       lichenConfig.pages.dist[DEV].path += themeName + '/';
 
       // Enable math typesetting
-      lichenConfig.remarkable.plugins.math.typeset = true;
+      lichenConfig.hooks = [{
+        event: POST_RENDER_HTML,
+        hook: 'math'
+      }];
 
       var lichen = new Lichen(lichenConfig);
 
