@@ -7,6 +7,14 @@ title: Test page
 
 # Test page
 
+## URLs
+
+* [Full URL](https://developer.mozilla.org/en-US/docs/Learn)
+* [Implicit protocol](//developer.mozilla.org/en-US/docs/Learn)
+* [Implicit domain name](/en-US/docs/Learn)
+* [Sub-resources](Skills/Infrastructure/Understanding_URLs)
+* [Going back in the directory tree](../CSS/display)
+
 ## Headings
 
 ### H3
