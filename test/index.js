@@ -21,96 +21,116 @@ describe('Lichen', function () {
   var testDirAbs = __dirname + '/';
 
   var config = {
-    'imageStyles': {
+    imageStyles: {
       '600': {
-        'actions': [{
-          'name': 'resize',
-          'width': 600
+        actions: [{
+          name: 'resize',
+          width: 600
         }],
-        'quality': 80
+        quality: 80
       },
       '900': {
-        'actions': [{
-          'name': 'resize',
-          'width': 900
+        actions: [{
+          name: 'resize',
+          width: 900
         }],
-        'quality': 80
+        quality: 80
       },
       '1200': {
-        'actions': [{
-          'name': 'resize',
-          'width': 1200
+        actions: [{
+          name: 'resize',
+          width: 1200
         }],
-        'quality': 80
+        quality: 80
       },
       '1800': {
-        'actions': [{
-          'name': 'resize',
-          'width': 1800
+        actions: [{
+          name: 'resize',
+          width: 1800
         }],
-        'quality': 80
+        quality: 80
       },
       '2400': {
-        'actions': [{
-          'name': 'resize',
-          'width': 2400
+        actions: [{
+          name: 'resize',
+          width: 2400
         }],
-        'quality': 80
+        quality: 80
       },
       '3600': {
-        'actions': [{
-          'name': 'resize',
-          'width': 3600
+        actions: [{
+          name: 'resize',
+          width: 3600
         }],
-        'quality': 80
+        quality: 80
       }
     },
-    'penrose': {
-      'math': {
+    penrose: {
+      math: {
         ex: 12
       }
     },
-    'lichen': {
+    proofreader: {
+      dictionaries: {
+        'build-in': ['en_GB'],
+        custom: []
+      },
+      selectors: {
+        whitelist: ['p', 'li', 'h1', 'h2', 'h3', 'h4', 'th', 'td', 'dl', 'figcaption'],
+        blacklist: ['pre', 'code']
+      },
+      'write-good': {
+        passive: false,
+        illusion: false,
+        so: false,
+        thereIs: false,
+        weasel: false,
+        adverb: false,
+        tooWordy: false,
+        cliches: false
+      }
+    },
+    lichen: {
       // Derivative images, rendered LaTeX
-      'files': {
-        'src': {
-          'path': testDir + 'data/files/'
+      files: {
+        src: {
+          path: testDir + 'data/files/'
         },
-        'dist': {
+        dist: {
           // Development (editor) build
-          'dev': {
-            'path': testDir + 'data/temp/files/',
-            'url': '/'
+          dev: {
+            path: testDir + 'data/temp/files/',
+            url: '/'
           },
           // Production build
-          'prod': {
-            'path': testDir + 'data/files/',
-            'url': '/'
+          prod: {
+            path: testDir + 'data/files/',
+            url: '/'
           }
         }
       },
       // Markdown content, YAML data, Nunjucks templates, rendered HTML
-      'pages': {
-        'src': {
-          'path': testDir + 'data/src/'
+      pages: {
+        src: {
+          path: testDir + 'data/src/'
         },
-        'dist': {
+        dist: {
           // Development (editor) build
-          'dev': {
-            'path': testDir + 'data/temp/',
-            'url': '/'
+          dev: {
+            path: testDir + 'data/temp/',
+            url: '/'
           },
           // Production build
-          'prod': {
-            'path': testDir + 'data/dist/',
-            'url': '/'
+          prod: {
+            path: testDir + 'data/dist/',
+            url: '/'
           }
         }
       },
-      'remarkable': {
-        'plugins': {
-          'image': {},
-          'responsiveImage': {
+      remarkable: {
+        plugins: {
+          image: {},
+          responsiveImage: {
             sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
             srcset: [{
               style: '600',
@@ -121,7 +141,8 @@ describe('Lichen', function () {
             }]
           }
         }
-      }
+      },
+      hooks: []
     }
   };
 
@@ -253,6 +274,7 @@ describe('Lichen', function () {
       var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
         penrose: config.penrose,
+        proofreader: config.proofreader,
         env: {
           dev: true // Development build
         }
@@ -261,11 +283,17 @@ describe('Lichen', function () {
       // Write pages to theme directory
       lichenConfig.pages.dist[DEV].path += themeName + '/';
 
-      // Enable math typesetting
-      lichenConfig.hooks = [{
+      // Math typesetting
+      lichenConfig.hooks.push({
         event: POST_RENDER_HTML,
         hook: 'math'
-      }];
+      });
+
+      // Spell and grammar checking
+      lichenConfig.hooks.push({
+        event: POST_RENDER_HTML,
+        hook: 'proofreader'
+      });
 
       var lichen = new Lichen(lichenConfig);
 
