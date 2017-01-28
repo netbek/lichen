@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Yet another static site generator",
   "main": "lib/lichen.js",
   "repository": {
@@ -48,6 +48,7 @@
     "node-sass": "3.4.2",
     "nunjucks": "^3.0.0",
     "penrose": "^0.1.8",
+    "proofreader": "^0.6.4",
     "remarkable": "^1.7.1",
     "retext": "^4.0.0",
     "retext-equality": "^2.5.0",
