@@ -70,24 +70,25 @@ describe('Lichen', function () {
         ex: 12
       }
     },
-    proofreader: {
-      dictionaries: {
-        'build-in': ['en_GB'],
-        custom: []
-      },
+    retext: {
       selectors: {
         whitelist: ['p', 'li', 'h1', 'h2', 'h3', 'h4', 'th', 'td', 'dl', 'figcaption'],
         blacklist: ['pre', 'code']
       },
-      'write-good': {
-        passive: false,
-        illusion: false,
-        so: false,
-        thereIs: false,
-        weasel: false,
-        adverb: false,
-        tooWordy: false,
-        cliches: false
+      rules: {
+        equality: {
+          noBinary: true
+        },
+        readability: {
+          age: 16,
+          threshold: 4 / 7,
+          minWords: 5
+        },
+        spell: {
+          ignoreLiteral: true,
+          ignoreDigits: true,
+          max: 30
+        }
       }
     },
     lichen: {
@@ -274,7 +275,7 @@ describe('Lichen', function () {
       var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
         penrose: config.penrose,
-        proofreader: config.proofreader,
+        retext: config.retext,
         env: {
           dev: true // Development build
         }
@@ -292,7 +293,7 @@ describe('Lichen', function () {
       // Spell and grammar checking
       lichenConfig.hooks.push({
         event: POST_RENDER_HTML,
-        hook: 'proofreader'
+        hook: 'retext'
       });
 
       var lichen = new Lichen(lichenConfig);
