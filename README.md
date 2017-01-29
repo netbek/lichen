@@ -4,7 +4,7 @@ Yet another static site generator.
 
 ## Dictionaries
 
-To update the dictionaries, download [English dictionaries for Apache OpenOffice](http://extensions.openoffice.org/en/project/english-dictionaries-apache-openoffice) extension and extract (ZIP file format).
+To build the dictionaries, run `scripts/dictionaries.sh`.
 
 ## Credit
 
