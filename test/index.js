@@ -85,9 +85,7 @@ describe('Lichen', function () {
           minWords: 5
         },
         spell: {
-          ignoreLiteral: true,
-          ignoreDigits: true,
-          max: 30
+          ignoreEmails: true
         }
       }
     },
