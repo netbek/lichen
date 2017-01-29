@@ -84,9 +84,7 @@ describe('Lichen', function () {
           threshold: 4 / 7,
           minWords: 5
         },
-        spell: {
-          ignoreEmails: true
-        }
+        spell: {}
       }
     },
     lichen: {

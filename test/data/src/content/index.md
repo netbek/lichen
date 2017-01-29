@@ -14,6 +14,10 @@ title: Test page
 * [Implicit domain name](/en-US/docs/Learn)
 * [Sub-resources](Skills/Infrastructure/Understanding_URLs)
 * [Going back in the directory tree](../CSS/display)
+* [example.com](http://example.com)
+* [www.example.com](http://www.example.com)
+* [http://www.example.com](http://www.example.com)
+* <me@example.com>
 
 ## Headings
 
