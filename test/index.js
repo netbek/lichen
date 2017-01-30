@@ -114,7 +114,15 @@ describe('Lichen', function () {
           ignore: []
         },
         spell: {
-          ignore: []
+          checkAllOccurrences: false,
+          ignore: [],
+          ignoreCurrency: true,
+          ignoreDigits: true,
+          ignoreEmail: true,
+          ignoreFQDN: true,
+          ignoreLiteral: true,
+          ignoreUnits: true,
+          ignoreURL: true
         }
       }
     },
