@@ -582,6 +582,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+cuss@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/cuss/-/cuss-1.3.0.tgz#3e505cf7bc79b3e4c9d17ad6ab714f5ef5026b41"
+
 dale-chall-formula@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dale-chall-formula/-/dale-chall-formula-1.0.0.tgz#a00df0a1c161ce4bd9a30422e41e953103a4ecc9"
@@ -1451,6 +1455,10 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
+irregular-plurals@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/irregular-plurals/-/irregular-plurals-1.2.0.tgz#38f299834ba8c00c30be9c554e137269752ff3ac"
+
 is-absolute@^0.2.3:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/is-absolute/-/is-absolute-0.2.6.tgz#20de69f3db942ef2d87b9c2da36f172235b1b5eb"
@@ -2088,6 +2096,10 @@ markdown-toc@^1.0.2:
     repeat-string "^1.6.1"
     strip-color "^0.1.0"
 
+match-casing@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/match-casing/-/match-casing-1.0.0.tgz#b9d8f836ed2d6c5fa3c78bff4458efd894b371a4"
+
 mathjax-node@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/mathjax-node/-/mathjax-node-0.5.2.tgz#24ce7a9e1abf695e7c17cb73ee72fc2754a49f8f"
@@ -2238,7 +2250,7 @@ natives@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.0.tgz#e9ff841418a6b2ec7a495e939984f78f163e6e31"
 
-nlcst-is-literal@^1.1.0:
+nlcst-is-literal@^1.0.0, nlcst-is-literal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/nlcst-is-literal/-/nlcst-is-literal-1.1.0.tgz#d7a442b333cf744a00a946c637edcf08a2d7dad5"
   dependencies:
@@ -2381,6 +2393,10 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
+number-to-words@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/number-to-words/-/number-to-words-1.2.3.tgz#4b713ab0c24015911187a0a03b59103569d7f49b"
+
 nunjucks@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.0.0.tgz#0a2a8fd2942a3ba04f5ba6684e4f7f7ceaca8305"
@@ -2483,6 +2499,15 @@ osenv@0, osenv@^0.1.0:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+parse-english@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/parse-english/-/parse-english-3.0.0.tgz#6eefb85a697c0cccacb80a4d6e9850aa6cb9ff67"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    parse-latin "^3.1.0"
+    unist-util-modify-children "^1.0.0"
+    unist-util-visit-children "^1.0.0"
 
 parse-filepath@^1.0.1:
   version "1.0.1"
@@ -2603,6 +2628,12 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+plur@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/plur/-/plur-2.1.2.tgz#7482452c1a0f508e3e344eaec312c91c29dc655a"
+  dependencies:
+    irregular-plurals "^1.0.0"
 
 pluralize@^3.0.0:
   version "3.1.0"
@@ -2857,6 +2888,33 @@ resolve@^1.1.6, resolve@^1.1.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
 
+retext-contractions@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/retext-contractions/-/retext-contractions-1.0.1.tgz#2b6e662406d90eb09cd725b1f3441f0fe917aad5"
+  dependencies:
+    has "^1.0.1"
+    nlcst-is-literal "^1.0.0"
+    nlcst-to-string "^2.0.0"
+    unist-util-visit "^1.1.0"
+
+retext-diacritics@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/retext-diacritics/-/retext-diacritics-1.1.0.tgz#c9257e26e1ab3e30e652ebbae9f40a5a331af81c"
+  dependencies:
+    match-casing "^1.0.0"
+    nlcst-search "^1.0.0"
+    nlcst-to-string "^2.0.0"
+    object-keys "^1.0.9"
+    quotation "^1.0.1"
+    unist-util-position "^3.0.0"
+
+retext-english@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/retext-english/-/retext-english-2.0.0.tgz#c5744be4e7124034f70c2f27bfcba8bd498951b3"
+  dependencies:
+    parse-english "^3.0.0"
+    unherit "^1.0.4"
+
 retext-equality@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/retext-equality/-/retext-equality-2.5.0.tgz#c066968c2a1ca14b61a466fd74956a246c6b0382"
@@ -2869,6 +2927,15 @@ retext-equality@^2.5.0:
     object-keys "^1.0.7"
     quotation "^1.0.1"
     unist-util-visit "^1.0.0"
+
+retext-indefinite-article@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/retext-indefinite-article/-/retext-indefinite-article-1.0.3.tgz#f33fea503d8b100d4f148200d4e003c1900873a5"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    number-to-words "^1.2.3"
+    unist-util-is "^2.0.0"
+    unist-util-visit "^1.1.0"
 
 retext-intensify@^2.0.0:
   version "2.0.0"
@@ -2890,6 +2957,35 @@ retext-latin@^1.0.0:
     parse-latin "^3.1.0"
     unherit "^1.0.4"
 
+retext-passive@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/retext-passive/-/retext-passive-1.1.0.tgz#e65a076aeeebbbf8b35d04a4b4d7a7af593bde0d"
+  dependencies:
+    nlcst-search "^1.0.0"
+    nlcst-to-string "^2.0.0"
+    unist-util-find-before "^2.0.0"
+    unist-util-position "^3.0.0"
+
+retext-profanities@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/retext-profanities/-/retext-profanities-3.1.0.tgz#45d6283f71ed3328318c50c29e4faf0c5bf9d6c9"
+  dependencies:
+    array-differ "^1.0.0"
+    array-intersection "^0.1.2"
+    cuss "^1.3.0"
+    nlcst-search "^1.0.0"
+    nlcst-to-string "^2.0.0"
+    object-keys "^1.0.9"
+    quotation "^1.0.0"
+
+retext-quotes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/retext-quotes/-/retext-quotes-1.0.0.tgz#17990d3ddf7ca38343d167232525e99d39fd9da8"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    unist-util-is "^2.0.0"
+    unist-util-visit "^1.1.0"
+
 retext-readability@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/retext-readability/-/retext-readability-3.2.0.tgz#9ef27482c97f04eb08cc749c569b08a6767cfe28"
@@ -2907,6 +3003,34 @@ retext-readability@^3.2.0:
     spache-formula "^1.0.0"
     syllable "^2.0.0"
     unist-util-visit "^1.0.0"
+
+retext-redundant-acronyms@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/retext-redundant-acronyms/-/retext-redundant-acronyms-1.0.0.tgz#459802d60750a961feaf38747cd294bd63817175"
+  dependencies:
+    match-casing "^1.0.0"
+    nlcst-search "^1.0.0"
+    nlcst-to-string "^2.0.0"
+    object-keys "^1.0.9"
+    quotation "^1.0.1"
+    unist-util-position "^2.0.1"
+
+retext-repeated-words@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/retext-repeated-words/-/retext-repeated-words-1.1.0.tgz#20cf3553c6a2bb6c90dca639804ee8980dcdf10d"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    unist-util-is "^2.0.0"
+    unist-util-visit "^1.1.0"
+
+retext-sentence-spacing@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/retext-sentence-spacing/-/retext-sentence-spacing-1.0.0.tgz#0bdd2ce9a67a14e082d5a4624a400ae7d9be6811"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    plur "^2.1.2"
+    unist-util-is "^2.0.0"
+    unist-util-visit "^1.1.0"
 
 retext-simplify@^3.0.0:
   version "3.0.0"
@@ -3375,11 +3499,29 @@ unique-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unique-stream/-/unique-stream-1.0.0.tgz#d59a4a75427447d9aa6c91e70263f8d26a4b104b"
 
+unist-util-find-before@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-find-before/-/unist-util-find-before-2.0.0.tgz#c0a33cdef4dc68e528ad470516704ef24187d52f"
+  dependencies:
+    unist-util-is "^2.0.0"
+
+unist-util-is@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-is/-/unist-util-is-2.0.0.tgz#e536472c4f78739e164d0859fc3201b97cf46e7c"
+
 unist-util-modify-children@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unist-util-modify-children/-/unist-util-modify-children-1.1.0.tgz#559203ae85d7a76283277be1abfbaf595a177ead"
   dependencies:
     array-iterate "^1.0.0"
+
+unist-util-position@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/unist-util-position/-/unist-util-position-2.0.1.tgz#1a639df0a0940460a2d8b205e9be704fe07518ec"
+
+unist-util-position@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-position/-/unist-util-position-3.0.0.tgz#e6e1e03eeeb81c5e1afe553e8d4adfbd7c0d8f82"
 
 unist-util-stringify-position@^1.0.0:
   version "1.1.0"
@@ -3391,7 +3533,7 @@ unist-util-visit-children@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unist-util-visit-children/-/unist-util-visit-children-1.1.0.tgz#bf1cd7be3c0a4efd03d84a22dd0ee7db005a3f6b"
 
-unist-util-visit@^1.0.0, unist-util-visit@^1.1.1:
+unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.1.1.tgz#e917a3b137658b335cb4420c7da2e74d928e4e94"
 

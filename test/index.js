@@ -76,15 +76,46 @@ describe('Lichen', function () {
         blacklist: ['pre', 'code']
       },
       rules: {
+        contractions: {
+          allowLiterals: false,
+          straight: false
+        },
+        diacritics: {
+          ignore: []
+        },
         equality: {
+          ignore: [],
           noBinary: true
+        },
+        indefiniteArticle: {},
+        intensify: {
+          ignore: []
+        },
+        passive: {},
+        profanities: {
+          ignore: []
+        },
+        quotes: {
+          preferred: 'smart',
+          smart: ['“”', '‘’'],
+          straight: ['"', '\'']
         },
         readability: {
           age: 16,
           threshold: 4 / 7,
           minWords: 5
         },
-        spell: {}
+        redundantAcronyms: {},
+        repeatedWords: {},
+        sentenceSpacing: {
+          preferred: 1
+        },
+        simplify: {
+          ignore: []
+        },
+        spell: {
+          ignore: []
+        }
       }
     },
     lichen: {
