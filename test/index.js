@@ -65,6 +65,9 @@ describe('Lichen', function () {
         quality: 80
       }
     },
+    linkchecker: {
+      baseURL: 'http://www.example.com'
+    },
     penrose: {
       math: {
         ex: 12
@@ -309,6 +312,7 @@ describe('Lichen', function () {
       var themeName = 'alpha';
       var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
+        linkchecker: config.linkchecker,
         penrose: config.penrose,
         retext: config.retext,
         env: {
@@ -329,6 +333,12 @@ describe('Lichen', function () {
       lichenConfig.hooks.push({
         event: POST_RENDER_HTML,
         hook: 'retext'
+      });
+
+      // Link checking
+      lichenConfig.hooks.push({
+        event: POST_RENDER_HTML,
+        hook: 'linkchecker'
       });
 
       var lichen = new Lichen(lichenConfig);
