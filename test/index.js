@@ -66,7 +66,9 @@ describe('Lichen', function () {
       }
     },
     linkchecker: {
-      baseURL: 'http://www.example.com'
+      baseURL: 'http://www.example.com',
+      ignoreFragments: true,
+      schemes: ['http', 'https']
     },
     penrose: {
       math: {

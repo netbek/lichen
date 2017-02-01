@@ -14,8 +14,9 @@ title: Test page
 * [Implicit domain name](/en-US/docs/Learn)
 * [Sub-resources](Skills/Infrastructure/Understanding_URLs)
 * [Going back in the directory tree](../CSS/display)
+* [Fragment](#fragment)
 * [example.com](http://example.com)
-* [www.example.com](http://www.example.com)
+* [www.example.com](www.example.com)
 * [http://www.example.com](http://www.example.com)
 * <me@example.com>
 
