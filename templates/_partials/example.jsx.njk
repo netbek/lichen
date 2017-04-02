@@ -1,0 +1,7 @@
+var ReactDOM = require('react-dom');
+
+{%- for module in modules %}
+  var {{ module.name }} = require('{{ module.path }}');
+{%- endfor %}
+
+ReactDOM.render({{ element|safe }}, document.getElementById('{{ containerId }}'));

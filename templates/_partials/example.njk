@@ -1,0 +1,32 @@
+<div class="example">
+  {%- if params.lang == 'html' %}
+    {%- if params.theme %}
+      {%- for theme in params.theme %}
+        <div class="example__output example__output--{{ theme }}">
+          {{ content|safe }}
+        </div>
+      {%- endfor %}
+    {%- else %}
+      <div class="example__output">
+        {{ content|safe }}
+      </div>
+    {%- endif %}
+  {%- elif params.lang == 'js' %}
+    <div class="example__output">
+      <script>
+        {{ content|safe }}
+      </script>
+    </div>
+  {%- elif params.lang == 'jsx' %}
+    <div class="example__output">
+      <div id="{{ id }}"></div>
+      <script type="text/babel" data-webpack-lang="{{ params.lang }}" data-webpack-id="{{ id }}" data-webpack-src="{{ src }}">
+        {{ content|safe }}
+      </script>
+    </div>
+  {%- endif %}
+
+  <div class="example__code">
+    <pre><code class="lang-{{ params.lang }}">{{ code|safe }}</code></pre>
+  </div>
+</div>
