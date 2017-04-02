@@ -9,13 +9,15 @@ title: Test page
 
 ## URLs
 
+* [PDF](https://drive.google.com/open?id=0Bz69EszGvRvaY1FzYWMtelhZZE0)
 * [Full URL](https://developer.mozilla.org/en-US/docs/Learn)
 * [Implicit protocol](//developer.mozilla.org/en-US/docs/Learn)
 * [Implicit domain name](/en-US/docs/Learn)
 * [Sub-resources](Skills/Infrastructure/Understanding_URLs)
 * [Going back in the directory tree](../CSS/display)
+* [Fragment](#fragment)
 * [example.com](http://example.com)
-* [www.example.com](http://www.example.com)
+* [www.example.com](www.example.com)
 * [http://www.example.com](http://www.example.com)
 * <me@example.com>
 
