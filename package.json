@@ -76,6 +76,7 @@
     "retext-sentence-spacing": "^1.0.0",
     "retext-simplify": "^3.0.0",
     "run-sequence": "^1.2.2",
+    "sanitize-filename": "^1.6.1",
     "unist-util-visit": "^1.1.1",
     "validator": "^6.2.1",
     "webpack": "^1.13.1",
