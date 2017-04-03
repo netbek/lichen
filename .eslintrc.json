@@ -1,0 +1,60 @@
+{
+  "root": true,
+  "env": {
+    "amd": true,
+    "browser": true,
+    "es6": true,
+    "jquery": true,
+    "mocha": true,
+    "node": true
+  },
+  "plugins": [
+    "dollar-sign",
+    "jsdoc",
+    "jsx-a11y",
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "dollar-sign/dollar-sign": [2, "ignoreProperties"],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }],
+    "jsdoc/check-param-names": 1,
+    "jsdoc/check-tag-names": 1,
+    "jsdoc/check-types": 1,
+    "jsdoc/newline-after-description": 1,
+    "jsdoc/require-description-complete-sentence": 1,
+    "jsdoc/require-hyphen-before-param-description": 1,
+    "jsdoc/require-param": 1,
+    "jsdoc/require-param-description": 1,
+    "jsdoc/require-param-type": 1,
+    "jsdoc/require-returns-description": 1,
+    "jsdoc/require-returns-type": 1,
+    "jsx-quotes": ["error", "prefer-double"],
+    "newline-per-chained-call": ["error", {
+      "ignoreChainWithDepth": 2
+    }],
+    "one-var": ["error", "never"],
+    "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+    "react/jsx-curly-spacing": ["error", "never", {
+      "allowMultiline": true
+    }],
+    "react/jsx-pascal-case": ["error", {
+      "allowAllCaps": true,
+      "ignore": []
+    }],
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "allow",
+      "afterOpening": "never"
+    }],
+    "react/no-array-index-key": "error"
+  }
+}
