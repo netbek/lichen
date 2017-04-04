@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.44",
+  "version": "0.1.45",
   "dependencies": {
     "jquery": "~1.11.1",
     "normalize-css": "git://github.com/necolas/normalize.css.git#02c5c7adbbec1707900fde86068405735c733b42",
