@@ -4,10 +4,9 @@ var assert = chai.assert;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var del = require('del');
-var multiGlob = require('../lib/util').multiGlob;
+var multiGlobAsync = require('../lib/util').multiGlobAsync;
 var path = require('path');
 var Penrose = require('penrose').Penrose;
-var Promise = require('bluebird');
 var Lichen = require('..').Lichen;
 
 var DEV = require('..').DEV;
@@ -296,7 +295,7 @@ describe('Lichen', function () {
       var actual = function () {
         return lichen.buildContent()
           .then(function () {
-            return multiGlob([lichenConfig.pages.dist[PROD].path + '**/*'], {
+            return multiGlobAsync([lichenConfig.pages.dist[PROD].path + '**/*'], {
               nodir: true
             });
           });
@@ -350,7 +349,7 @@ describe('Lichen', function () {
             themes: [themeName]
           })
           .then(function () {
-            return multiGlob([config.lichen.pages.dist[DEV].path + '**/*'], {
+            return multiGlobAsync([config.lichen.pages.dist[DEV].path + '**/*'], {
               nodir: true
             });
           });
