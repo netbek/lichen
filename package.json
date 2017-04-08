@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "description": "Yet another static site generator",
   "main": "lib/lichen.js",
   "repository": {
@@ -47,7 +47,7 @@
     "gulp-util": "^3.0.8",
     "js-yaml": "^3.7.0",
     "lodash": "^4.17.2",
-    "markdown-toc": "^1.0.2",
+    "markdown-toc": "^1.1.0",
     "mathjax-node": "^0.5.2",
     "nlcst-is-literal": "^1.1.0",
     "nlcst-to-string": "^2.0.0",

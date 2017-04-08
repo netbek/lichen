@@ -168,7 +168,7 @@ describe('Lichen', function () {
         }
       },
       remarkable: {
-        plugins: {
+        rulesConfig: {
           image: {},
           responsiveImage: {
             sizes: '100vw', // '(min-width: 960px) 240px, 100vw',
