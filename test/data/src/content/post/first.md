@@ -1,5 +1,6 @@
 ---
-theme: alpha
+themes:
+  - alpha
 title: My first post
 ---
 
@@ -7,4 +8,8 @@ title: My first post
 
 ```template
 {% render "list", site.data["near-earth-comets"].view.data %}{% endrender %}
+```
+
+```example lang="jsx"
+<div/>
 ```

@@ -8,6 +8,12 @@
     "mocha": true,
     "node": true
   },
+  "globals": {
+    "$": true,
+    "jQuery": true,
+    "React": true,
+    "ReactDOM": true
+  },
   "plugins": [
     "dollar-sign",
     "jsdoc",
@@ -56,5 +62,9 @@
       "afterOpening": "never"
     }],
     "react/no-array-index-key": "error"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
   }
 }

@@ -4,7 +4,7 @@ var assert = chai.assert;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var del = require('del');
-var multiGlobAsync = require('../lib/util').multiGlobAsync;
+var multiGlobAsync = require('../lib/utils/multiGlobAsync');
 var path = require('path');
 var Penrose = require('penrose').Penrose;
 var Lichen = require('..').Lichen;
@@ -131,7 +131,7 @@ describe('Lichen', function () {
       }
     },
     lichen: {
-      // Derivative images, rendered LaTeX
+      // Derivative images, rendered LaTeX, transpiled JS examples
       files: {
         src: {
           path: testDir + 'data/files/'
@@ -147,6 +147,9 @@ describe('Lichen', function () {
             path: testDir + 'data/files/',
             url: '/'
           }
+        },
+        temp: {
+          path: testDir + 'data/temp/'
         }
       },
       // Markdown content, YAML data, Nunjucks templates, rendered HTML
@@ -182,6 +185,28 @@ describe('Lichen', function () {
           }
         }
       },
+      webpack: {
+        externals: {
+          'jquery': 'jQuery',
+          'react': 'React',
+          'react-dom': 'ReactDOM'
+        },
+        resolve: {
+          extensions: ['.js', '.jsx']
+        },
+        module: {
+          rules: [
+            // React
+            {
+              test: /\.jsx$/,
+              exclude: /node_modules/,
+              use: [
+                'babel-loader'
+              ]
+            }
+          ]
+        }
+      },
       hooks: []
     }
   };
@@ -195,11 +220,16 @@ describe('Lichen', function () {
     var dirs = [];
 
     _.forEach(config.lichen.files.dist, function (build) {
+      dirs.push(path.join(build.path, 'js'));
       dirs.push(path.join(build.path, 'math'));
       dirs.push(path.join(build.path, 'styles'));
     });
 
     _.forEach(config.lichen.pages.dist, function (build) {
+      dirs.push(path.join(build.path));
+    });
+
+    _.forEach(config.lichen.pages.temp, function (build) {
       dirs.push(path.join(build.path));
     });
 
@@ -309,8 +339,8 @@ describe('Lichen', function () {
       return assert.eventually.deepEqual(actual(), expected);
     });
 
-    it('Should build only content for alpha theme', function () {
-      var themeName = 'alpha';
+    it('Should build only content for omega theme', function () {
+      var themeName = 'omega';
       var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
         linkchecker: config.linkchecker,

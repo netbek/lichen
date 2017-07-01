@@ -11,6 +11,7 @@ nbproject
 
 # Test output
 test/data/dist/
+test/data/files/js/
 test/data/files/math/
 test/data/files/styles/
 test/data/temp/
