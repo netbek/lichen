@@ -1,11 +1,14 @@
 module.exports = {
   view: {
     name: 'Near-Earth Comets - Orbital Elements',
-    columns: [{
-      name: 'Object'
-    }, {
-      name: 'Epoch (TDB)'
-    }],
+    columns: [
+      {
+        name: 'Object'
+      },
+      {
+        name: 'Epoch (TDB)'
+      }
+    ],
     data: [
       ['1P/Halley', '49400'],
       ['2P/Encke', '56870'],
