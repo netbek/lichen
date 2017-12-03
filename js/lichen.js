@@ -1,7 +1,7 @@
-(function () {
+(function() {
   var $menu = jQuery('.lichen-region-header .sf-menu');
 
-  jQuery('a[href="#"]', $menu).on('click', function (e) {
+  jQuery('a[href="#"]', $menu).on('click', function(e) {
     e.preventDefault();
   });
 

@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-cssmin');
 var gulp = require('gulp');
@@ -8,8 +7,8 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 var config = {
-  'autoprefixer': {
-    'browsers': [
+  autoprefixer: {
+    browsers: [
       'last 2 versions',
       'ie >= 8',
       'ff >= 5',
@@ -21,29 +20,23 @@ var config = {
       'bb >= 6'
     ]
   },
-  'css': {
-    'params': {
-      'includePaths': [
-        'bower_components/bourbon/app/assets/stylesheets/',
-        'bower_components/breakpoint-sass/stylesheets/',
-        'bower_components/mathsass/dist/',
-        'bower_components/modernizr-mixin/stylesheets/',
-        'bower_components/singularity/stylesheets/'
-      ],
-      'errLogToConsole': true
+  css: {
+    params: {
+      includePaths: ['node_modules/bourbon/app/assets/stylesheets/'],
+      errLogToConsole: true
     }
   }
 };
 
-/*******************************************************************************
- * Functions
- ******************************************************************************/
+/* -----------------------------------------------------------------------------
+Functions
+----------------------------------------------------------------------------- */
 
 /**
  *
- * @param  {String} src
- * @param  {String} dist
- * @return {Stream}
+ * @param  {string} src
+ * @param  {string} dist
+ * @returns {Stream}
  */
 function buildCss(src, dist) {
   return gulp
@@ -51,56 +44,56 @@ function buildCss(src, dist) {
     .pipe(sass(config.css.params).on('error', sass.logError))
     .pipe(autoprefixer(config.autoprefixer))
     .pipe(gulp.dest(dist))
-    .pipe(cssmin({
-      advanced: false
-    }))
-    .pipe(rename({
-      suffix: '.min'
-    }))
+    .pipe(
+      cssmin({
+        advanced: false
+      })
+    )
+    .pipe(
+      rename({
+        suffix: '.min'
+      })
+    )
     .pipe(gulp.dest(dist));
 }
 
 /**
  *
- * @param  {String} src
- * @param  {String} dist
- * @return {Stream}
+ * @param  {string} src
+ * @param  {string} dist
+ * @returns {Stream}
  */
 function buildJs(src, dist) {
   return gulp
     .src(src)
     .pipe(gulp.dest(dist))
-    .pipe(rename({
-      suffix: '.min'
-    }))
+    .pipe(
+      rename({
+        suffix: '.min'
+      })
+    )
     .pipe(uglify())
     .pipe(gulp.dest(dist));
 }
 
-/*******************************************************************************
- * Tasks
- ******************************************************************************/
+/* -----------------------------------------------------------------------------
+Tasks
+----------------------------------------------------------------------------- */
 
-gulp.task('build-css', function (cb) {
-  buildCss('src/css/**/*.scss', 'css/')
-    .on('end', cb);
+gulp.task('build-css', function(cb) {
+  buildCss('src/css/**/*.scss', 'css/').on('end', cb);
 });
 
-gulp.task('build-js', function (cb) {
-  buildJs('src/js/**/*.js', 'js/')
-    .on('end', cb);
+gulp.task('build-js', function(cb) {
+  buildJs('src/js/**/*.js', 'js/').on('end', cb);
 });
 
-gulp.task('build', function (cb) {
-  runSequence(
-    'build-css',
-    'build-js',
-    cb
-  );
+gulp.task('build', function(cb) {
+  runSequence('build-css', 'build-js', cb);
 });
 
-/*******************************************************************************
- * Default task
- ******************************************************************************/
+/* -----------------------------------------------------------------------------
+Default task
+----------------------------------------------------------------------------- */
 
 gulp.task('default', ['build']);

@@ -238,7 +238,7 @@ describe('Lichen', function() {
   /**
    * Deletes test output files.
    *
-   * @return {Promise}
+   * @returns {Promise}
    */
   function deleteOutput() {
     var dirs = [];
