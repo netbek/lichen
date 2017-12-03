@@ -1,4 +1,4 @@
-# Lichen [![Build Status](https://secure.travis-ci.org/netbek/lichen.png?branch=master)](http://travis-ci.org/netbek/lichen)
+# Lichen [![CircleCI](https://circleci.com/gh/netbek/lichen.svg?style=svg)](https://circleci.com/gh/netbek/lichen)
 
 Yet another static site generator.
 
