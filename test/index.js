@@ -1,18 +1,15 @@
 var _ = require('lodash');
 var chai = require('chai');
-var assert = chai.assert;
+var {assert} = chai;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var del = require('del');
 var multiGlobAsync = require('../lib/utils/multiGlobAsync');
 var path = require('path');
-var Penrose = require('penrose').Penrose;
-var Lichen = require('..').Lichen;
+var {Penrose} = require('penrose');
+var {Lichen} = require('..');
 
-var DEV = require('..').DEV;
-var PROD = require('..').PROD;
-
-var POST_RENDER_HTML = require('..').POST_RENDER_HTML;
+var {DEV, PROD, POST_RENDER_HTML} = require('..');
 
 describe('Lichen', function() {
   var dirAbs = process.cwd() + '/';
