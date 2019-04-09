@@ -4,6 +4,6 @@ test: node_modules
 	@node_modules/.bin/mocha --harmony --grep "$(GREP)"
 
 node_modules: package.json
-	@yarn install
+	@npm install
 
 .PHONY: test
