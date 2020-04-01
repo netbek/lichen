@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.72",
+  "version": "0.1.73",
   "description": "Yet another static site generator",
   "main": "lib/lichen.js",
   "repository": {
