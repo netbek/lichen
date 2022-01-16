@@ -1,6 +1,14 @@
 {
   "name": "lichen",
   "version": "0.1.82",
+  "browserslist": [
+    "last 5 years",
+    "bb >= 6",
+    "edge >= 16",
+    "ie >= 11",
+    "op_mini all",
+    "samsung >= 5"
+  ],
   "description": "Yet another static site generator",
   "main": "lib/lichen.js",
   "repository": {
@@ -30,7 +38,7 @@
     "@babel/register": "7.16.9",
     "babel-loader": "8.2.3",
     "bluebird": "3.7.2",
-    "bourbon": "7.0.0",
+    "bourbon": "4.2.7",
     "chalk": "4.1.2",
     "cheerio": "0.22.0",
     "del": "6.0.0",
