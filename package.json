@@ -1,6 +1,14 @@
 {
   "name": "lichen",
   "version": "0.1.82",
+  "browserslist": [
+    "last 5 years",
+    "bb >= 6",
+    "edge >= 16",
+    "ie >= 11",
+    "op_mini all",
+    "samsung >= 5"
+  ],
   "description": "Yet another static site generator",
   "main": "lib/lichen.js",
   "repository": {
@@ -48,11 +56,11 @@
     "glob": "7.2.0",
     "glob-promise": "3.4.0",
     "gm": "1.23.1",
-    "gulp": "3.9.1",
-    "gulp-autoprefixer": "3.1.1",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "8.0.0",
     "gulp-cssmin": "0.2.0",
     "gulp-rename": "1.4.0",
-    "gulp-sass": "3.2.1",
+    "gulp-sass": "5.1.0",
     "gulp-uglify": "1.5.4",
     "gulp-util": "3.0.8",
     "js-yaml": "3.14.1",
@@ -64,7 +72,7 @@
     "nlcst-is-literal": "1.2.2",
     "nlcst-to-string": "2.0.4",
     "node-prismjs": "0.1.2",
-    "node-sass": "4.14.1",
+    "node-sass": "6.0.1",
     "nodehun": "3.0.2",
     "nunjucks": "3.2.3",
     "penrose": "0.2.21",
