@@ -1,24 +1,14 @@
+const {browserslist} = require('./package.json');
 var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-cssmin');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var runSequence = require('run-sequence');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('node-sass'));
 var uglify = require('gulp-uglify');
 
 var config = {
   autoprefixer: {
-    browsers: [
-      'last 2 versions',
-      'ie >= 8',
-      'ff >= 5',
-      'chrome >= 20',
-      'opera >= 12',
-      'safari >= 4',
-      'ios >= 6',
-      'android >= 2',
-      'bb >= 6'
-    ]
+    overrideBrowserslist: browserslist
   },
   css: {
     params: {
@@ -88,12 +78,10 @@ gulp.task('build-js', function(cb) {
   buildJs('src/js/**/*.js', 'js/').on('end', cb);
 });
 
-gulp.task('build', function(cb) {
-  runSequence('build-css', 'build-js', cb);
-});
+gulp.task('build', gulp.series('build-css', 'build-js'));
 
 /* -----------------------------------------------------------------------------
 Default task
 ----------------------------------------------------------------------------- */
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));
