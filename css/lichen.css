@@ -64,8 +64,6 @@
     *white-space: normal;
     /* ...unless you support IE7 (let it wrap) */
     -webkit-transition: none;
-    -o-transition: none;
-    -moz-transition: none;
     transition: none; }
   .lichen-region-header .sf-menu ul li {
     background: #006d8c; }
@@ -76,16 +74,12 @@
     background: #008bb2;
     /* only transition out, not in */
     -webkit-transition: none;
-    -o-transition: none;
-    -moz-transition: none;
     transition: none; }
   .lichen-region-header .sf-menu > li:hover,
   .lichen-region-header .sf-menu > li.sfHover {
     background: #006d8c;
     /* only transition out, not in */
     -webkit-transition: none;
-    -o-transition: none;
-    -moz-transition: none;
     transition: none; }
   .lichen-region-header .sf-arrows .sf-with-ul {
     padding-right: 2.5em;
