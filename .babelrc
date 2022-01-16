@@ -1,6 +1,5 @@
 {
   "plugins": [
-    "lodash",
     "transform-class-properties"
   ],
   "presets": [
