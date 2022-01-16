@@ -1,22 +1,4 @@
 {
-  "reject": [
-    "bluebird",
-    "bootstrap",
-    "bourbon",
-    "c3",
-    "eslint-scope",
-    "event-stream",
-    "flag-icon-css",
-    "hard-source-webpack-plugin",
-    "jquery-ui",
-    "json-sass",
-    "jtable",
-    "marked",
-    "moment",
-    "promise-queue",
-    "timepicker",
-    "vega-embed"
-  ],
   "removeRange": true,
   "target": "minor",
   "upgrade": true
