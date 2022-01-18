@@ -27,9 +27,6 @@
   "bugs": {
     "url": "https://github.com/netbek/lichen/issues"
   },
-  "resolutions": {
-    "eslint-scope": "3.7.1"
-  },
   "dependencies": {
     "babel-core": "6.26.3",
     "babel-eslint": "8.2.6",
