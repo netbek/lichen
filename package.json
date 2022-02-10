@@ -69,7 +69,7 @@
     "nlcst-is-literal": "1.2.2",
     "nlcst-to-string": "2.0.4",
     "node-prismjs": "0.1.2",
-    "node-sass": "6.0.1",
+    "node-sass": "7.0.0",
     "nodehun": "3.0.2",
     "nunjucks": "3.2.3",
     "penrose": "0.2.23",
