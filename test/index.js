@@ -210,6 +210,7 @@ describe('Lichen', function() {
         }
       },
       webpack: {
+        mode: 'production',
         externals: {
           jquery: 'jQuery',
           react: 'React',
