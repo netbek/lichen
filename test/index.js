@@ -3,9 +3,10 @@ var chai = require('chai');
 var {assert} = chai;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-var del = require('del');
+var fs = require('fs-extra');
 var multiGlobAsync = require('../lib/utils/multiGlobAsync');
 var path = require('path');
+var Promise = require('bluebird');
 var {Penrose} = require('penrose');
 var {Lichen} = require('..');
 
@@ -209,6 +210,7 @@ describe('Lichen', function() {
         }
       },
       webpack: {
+        mode: 'production',
         externals: {
           jquery: 'jQuery',
           react: 'React',
@@ -223,7 +225,10 @@ describe('Lichen', function() {
             {
               test: /\.jsx$/,
               exclude: /node_modules/,
-              use: ['babel-loader']
+              loader: 'babel-loader?cacheDirectory',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react']
+              }
             }
           ]
         }
@@ -254,7 +259,7 @@ describe('Lichen', function() {
       dirs.push(path.join(build.path));
     });
 
-    return del(dirs);
+    return Promise.mapSeries(dirs, dir => fs.remove(dir));
   }
 
   beforeEach(function(done) {
