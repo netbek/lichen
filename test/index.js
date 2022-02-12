@@ -223,7 +223,10 @@ describe('Lichen', function() {
             {
               test: /\.jsx$/,
               exclude: /node_modules/,
-              use: ['babel-loader']
+              loader: 'babel-loader?cacheDirectory',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react']
+              }
             }
           ]
         }
