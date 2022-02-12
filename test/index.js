@@ -3,9 +3,10 @@ var chai = require('chai');
 var {assert} = chai;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-var del = require('del');
+var fs = require('fs-extra');
 var multiGlobAsync = require('../lib/utils/multiGlobAsync');
 var path = require('path');
+var Promise = require('bluebird');
 var {Penrose} = require('penrose');
 var {Lichen} = require('..');
 
@@ -257,7 +258,7 @@ describe('Lichen', function() {
       dirs.push(path.join(build.path));
     });
 
-    return del(dirs);
+    return Promise.mapSeries(dirs, dir => fs.remove(dir));
   }
 
   beforeEach(function(done) {
