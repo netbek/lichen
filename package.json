@@ -94,7 +94,7 @@
     "retext-simplify": "3.0.0",
     "sanitize-filename": "1.6.3",
     "unist-util-visit": "1.4.1",
-    "validator": "6.3.0",
+    "validator": "13.7.0",
     "webpack": "4.46.0",
     "yaml-front-matter": "3.4.1",
     "yargs-parser": "4.2.1"
