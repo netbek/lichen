@@ -4,7 +4,7 @@ var {assert} = chai;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var fs = require('fs-extra');
-var multiGlobAsync = require('../lib/utils/multiGlobAsync');
+var globby = require('globby');
 var path = require('path');
 var Promise = require('bluebird');
 var {Penrose} = require('penrose');
@@ -12,14 +12,14 @@ var {Lichen} = require('..');
 
 var {DEV, PROD, POST_RENDER_HTML} = require('..');
 
-describe('Lichen', function() {
+describe('Lichen', function () {
   var dirAbs = process.cwd() + '/';
   var testDir = __dirname.substring(process.cwd().length + 1) + '/';
   var testDirAbs = __dirname + '/';
 
   var config = {
     imageStyles: {
-      '600': {
+      600: {
         actions: [
           {
             name: 'resize',
@@ -28,7 +28,7 @@ describe('Lichen', function() {
         ],
         quality: 80
       },
-      '900': {
+      900: {
         actions: [
           {
             name: 'resize',
@@ -37,7 +37,7 @@ describe('Lichen', function() {
         ],
         quality: 80
       },
-      '1200': {
+      1200: {
         actions: [
           {
             name: 'resize',
@@ -46,7 +46,7 @@ describe('Lichen', function() {
         ],
         quality: 80
       },
-      '1800': {
+      1800: {
         actions: [
           {
             name: 'resize',
@@ -55,7 +55,7 @@ describe('Lichen', function() {
         ],
         quality: 80
       },
-      '2400': {
+      2400: {
         actions: [
           {
             name: 'resize',
@@ -64,7 +64,7 @@ describe('Lichen', function() {
         ],
         quality: 80
       },
-      '3600': {
+      3600: {
         actions: [
           {
             name: 'resize',
@@ -245,31 +245,31 @@ describe('Lichen', function() {
   function deleteOutput() {
     var dirs = [];
 
-    _.forEach(config.lichen.files.dist, function(build) {
+    _.forEach(config.lichen.files.dist, function (build) {
       dirs.push(path.join(build.path, 'js'));
       dirs.push(path.join(build.path, 'math'));
       dirs.push(path.join(build.path, 'styles'));
     });
 
-    _.forEach(config.lichen.pages.dist, function(build) {
+    _.forEach(config.lichen.pages.dist, function (build) {
       dirs.push(path.join(build.path));
     });
 
-    _.forEach(config.lichen.pages.temp, function(build) {
+    _.forEach(config.lichen.pages.temp, function (build) {
       dirs.push(path.join(build.path));
     });
 
-    return Promise.mapSeries(dirs, dir => fs.remove(dir));
+    return Promise.mapSeries(dirs, (dir) => fs.remove(dir));
   }
 
-  beforeEach(function(done) {
-    deleteOutput().then(function() {
+  beforeEach(function (done) {
+    deleteOutput().then(function () {
       done();
     });
   });
 
-  after(function(done) {
-    deleteOutput().then(function() {
+  after(function (done) {
+    deleteOutput().then(function () {
       done();
     });
   });
@@ -282,50 +282,50 @@ describe('Lichen', function() {
   });
   var lichen = new Lichen(lichenConfig);
 
-  describe('findContentTemplate', function() {
-    it('Should return absolute path to index template', function() {
+  describe('findContentTemplate', function () {
+    it('Should return absolute path to index template', function () {
       var actual = lichen.findContentTemplate('index');
       var expected = dirAbs + 'templates/index.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for default single view of any content type', function() {
+    it('Should return absolute path to template for default single view of any content type', function () {
       var actual = lichen.findContentTemplate('single');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for default single view of any content type for given theme', function() {
+    it('Should return absolute path to template for default single view of any content type for given theme', function () {
       var actual = lichen.findContentTemplate('single', undefined, 'alpha');
       var expected = testDirAbs + 'data/src/themes/alpha/templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for default view if that view does not exist for given content type', function() {
+    it('Should return absolute path to template for default view if that view does not exist for given content type', function () {
       var actual = lichen.findContentTemplate('single', 'post');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for default view if that view does not exist for given theme', function() {
+    it('Should return absolute path to template for default view if that view does not exist for given theme', function () {
       var actual = lichen.findContentTemplate('single', undefined, 'omega');
       var expected = dirAbs + 'templates/single.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for view that does exist for given content type', function() {
+    it('Should return absolute path to template for view that does exist for given content type', function () {
       var actual = lichen.findContentTemplate('list', 'post');
       var expected = testDirAbs + 'data/src/templates/post/list.njk';
 
       assert.equal(actual, expected);
     });
 
-    it('Should return absolute path to template for view that does exist for given content type and theme', function() {
+    it('Should return absolute path to template for view that does exist for given content type and theme', function () {
       var actual = lichen.findContentTemplate('list', 'post', 'alpha');
       var expected =
         testDirAbs + 'data/src/themes/alpha/templates/post/list.njk';
@@ -334,8 +334,8 @@ describe('Lichen', function() {
     });
   });
 
-  describe('findPartialTemplate', function() {
-    it('Should return absolute path to template for image', function() {
+  describe('findPartialTemplate', function () {
+    it('Should return absolute path to template for image', function () {
       var actual = lichen.findPartialTemplate('image');
       var expected = dirAbs + 'templates/_partials/image.njk';
 
@@ -343,14 +343,14 @@ describe('Lichen', function() {
     });
   });
 
-  describe('buildContent', function() {
+  describe('buildContent', function () {
     this.timeout(0);
 
-    it('Should build content', function() {
-      var actual = function() {
-        return lichen.buildContent().then(function() {
-          return multiGlobAsync([lichenConfig.pages.dist[PROD].path + '**/*'], {
-            nodir: true
+    it('Should build content', function () {
+      var actual = function () {
+        return lichen.buildContent().then(function () {
+          return globby([lichenConfig.pages.dist[PROD].path + '**/*'], {
+            onlyFiles: true
           });
         });
       };
@@ -363,7 +363,7 @@ describe('Lichen', function() {
       return assert.eventually.deepEqual(actual(), expected);
     });
 
-    it('Should build only content for omega theme', function() {
+    it('Should build only content for omega theme', function () {
       var themeName = 'omega';
       var lichenConfig = _.assign({}, config.lichen, {
         imageStyles: config.imageStyles,
@@ -398,18 +398,15 @@ describe('Lichen', function() {
 
       var lichen = new Lichen(lichenConfig);
 
-      var actual = function() {
+      var actual = function () {
         return lichen
           .buildContent({
             themes: [themeName]
           })
-          .then(function() {
-            return multiGlobAsync(
-              [config.lichen.pages.dist[DEV].path + '**/*'],
-              {
-                nodir: true
-              }
-            );
+          .then(function () {
+            return globby([config.lichen.pages.dist[DEV].path + '**/*'], {
+              onlyFiles: true
+            });
           });
       };
 
