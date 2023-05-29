@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.98",
+  "version": "0.1.99",
   "browserslist": [
     "last 5 years",
     "bb >= 6",
