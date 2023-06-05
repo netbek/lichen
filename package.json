@@ -1,6 +1,10 @@
 {
   "name": "lichen",
   "version": "0.1.100",
+  "engines": {
+    "node": "18.16.0",
+    "npm": "9.6.7"
+  },
   "browserslist": [
     "last 5 years",
     "bb >= 6",
@@ -29,7 +33,7 @@
   },
   "dependencies": {
     "@babel/core": "7.22.1",
-    "@babel/preset-env": "7.22.2",
+    "@babel/preset-env": "7.22.4",
     "@babel/preset-react": "7.22.3",
     "babel-loader": "8.3.0",
     "babel-plugin-lodash": "3.3.4",
@@ -38,7 +42,7 @@
     "bourbon": "4.3.4",
     "chalk": "4.1.2",
     "cheerio": "0.22.0",
-    "eslint": "8.41.0",
+    "eslint": "8.42.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
     "espree": "9.5.2",
@@ -64,7 +68,7 @@
     "node-sass": "7.0.3",
     "nodehun": "3.0.2",
     "nunjucks": "3.2.4",
-    "penrose": "0.2.38",
+    "penrose": "0.2.39",
     "prettier": "2.8.8",
     "quotation": "1.1.3",
     "remarkable": "1.7.4",
