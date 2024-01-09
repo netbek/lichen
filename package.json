@@ -1,6 +1,6 @@
 {
   "name": "lichen",
-  "version": "0.1.101",
+  "version": "0.1.102",
   "engines": {
     "node": "20.10.0",
     "npm": "10.2.3"
