@@ -3,7 +3,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-cssmin');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var sass = require('gulp-sass')(require('node-sass'));
+var sass = require('gulp-sass')(require('sass-embedded'));
 var uglify = require('gulp-uglify');
 
 var config = {
@@ -70,11 +70,11 @@ function buildJs(src, dist) {
 Tasks
 ----------------------------------------------------------------------------- */
 
-gulp.task('build-css', function(cb) {
+gulp.task('build-css', function (cb) {
   buildCss('src/css/**/*.scss', 'css/').on('end', cb);
 });
 
-gulp.task('build-js', function(cb) {
+gulp.task('build-js', function (cb) {
   buildJs('src/js/**/*.js', 'js/').on('end', cb);
 });
 
